@@ -1,0 +1,7 @@
+AppBundle\Entity\Difficulty:
+    difficulty_1:
+        name: 'Facile'
+    difficulty_2:
+        name: 'Moyen'
+    difficulty_3:
+        name: 'Difficile'
