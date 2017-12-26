@@ -1,0 +1,31 @@
+AppBundle\Entity\IngredientModel:
+    ingredient_model_0:
+        name: 'Oignon'
+        description: <sentence()>
+    ingredient_model_1:
+        name: 'Poivron'
+        description: <sentence()>
+    ingredient_model_2:
+        name: 'Conserve de tomate'
+        description: <sentence()>
+    ingredient_model_3:
+        name: 'Courgette'
+        description: <sentence()>
+    ingredient_model_4:
+        name: 'Ail'
+        description: <sentence()>
+    ingredient_model_5:
+        name: 'Gingembre'
+        description: <sentence()>
+    ingredient_model_6:
+        name: 'Thym'
+        description: <sentence()>
+    ingredient_model_7:
+        name: 'Coriandre'
+        description: <sentence()>
+    ingredient_model_8:
+        name: 'Paprika'
+        description: <sentence()>
+    ingredient_model_9:
+        name: 'Tofu fumé'
+        description: <sentence()>
