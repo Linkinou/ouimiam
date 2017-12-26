@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new AppBundle\AppBundle(),
+            new FrontBundle\FrontBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

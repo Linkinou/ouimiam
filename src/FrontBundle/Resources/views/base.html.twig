@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="title" content="">
+    <meta name="description" content="">
+
+    <meta name="author" content="Cédric Merouani">
+    <meta name="Copyright" content="Copyright Cédric Merouani 2016. All Rights Reserved.">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/front/css/styles.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/front/fonts/awards/awards.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('bundles/front/css/font-awesome.css') }}" type="text/css"/>
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% block javascripts_header %}
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+    {% embed 'FrontBundle:_common:header.html.twig' %}{% endembed %}
+{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block footer %}
+    {% embed 'FrontBundle:_common:footer.html.twig' %}{% endembed %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/front/js/library/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/jquery.qtip.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/html5shiv.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/min/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/min/rw-sidebar.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/min/smk-accordion.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/min/smk-menu.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/min/smk-visual-select.min.js') }}"></script>
+    <script src="{{ asset('bundles/front/js/min/scripts.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>

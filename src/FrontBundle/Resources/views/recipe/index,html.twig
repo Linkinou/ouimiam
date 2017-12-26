@@ -1,0 +1,95 @@
+{% extends '@Front/base.html.twig' %}
+
+{% block title %}OuiFood - Recette{% endblock %}
+
+{% block body %}
+
+<div class="rw-container rw-section">
+    <div class="rw-inner clearfix">
+
+        <!-- Main content -->
+        <div class="rw-column rw-content">
+
+            <div class="rw-row page-breadcrumb">
+                <a href="{{ path('home') }}">Home</a> &raquo; <a href="#">Recipes</a> &raquo; <span>{{ recipe.name }}</span>
+            </div>
+            <div class="rw-row page-title">
+                <h1>{{ recipe.name }}</h1>
+            </div>
+
+            <div class="rw-row">
+                <div class="entry style-columns">
+                    <div class="entry-photo single-recipe-photo-cover">
+                        <img src="{{ asset('bundles/front/placeholder/1.jpg') }}" alt="">
+                    </div>
+                    <div class="entry-content clearfix">
+
+                        <div class="recipe-content">
+
+                            <div class="single-recipe-ingredients">
+                                <h3 class="recipe-headlines ingredients first">Ingredients:</h3>
+                                <ul>
+                                    {% for ingredient in recipe.ingredients %}
+                                        <li>
+                                            <div class="mark-as-ok"><i class="fa fa-check"></i></div>
+                                            <div class="ingredient"><a href="#">{{ ingredient.model.name }}</a></div>
+                                            <div class="quantity">
+                                                <div class="qt">{{ ingredient.quantity }} {{ ingredient.unit.name }}</div>
+                                                <div class="qt-notes">Here are some additional notes regarding this ingredient. Aliquam eget vestibulum mauris, sed lacinia ante.</div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <h3 class="recipe-headlines preparation-mode">Preparation mode:</h3>
+                            {{ recipe.preparation|raw }}
+
+                            <h3 class="recipe-headlines preparation-mode">Cooking steps:</h3>
+                            {{ recipe.cookingSteps|raw }}
+                        </div>
+
+                        <div class="recipe-meta">
+                            <ul>
+                                <li>
+                                    <div class="entry-info-author">
+                                        <img src="{{ asset('bundles/front/placeholder/50-3.jpg') }}" >
+                                        <div class="author-name"><a href="#">Sandra Williams</a> <span class="mark green" title="Pro member!">Pro</span></div>
+                                        <div><a href="#" class="follow-user button mini blue" title="851 followers">
+                                                <i class="fa fa-plus"></i> <span class="text">Follow</span>
+                                            </a></div>
+                                    </div>
+                                </li>
+                                <li><i class="the-icon fa fa-calendar" title="Submited on 21 Aug 2014"></i> <span>21 Aug 2014</span></li>
+                                <li><div><i class="the-icon fa fa-book" title="Category"></i> <span><a href="#">Desserts</a></span></div></li>
+                                <li><div><i class="the-icon fa fa-tasks" title="Difficulty"></i> <span>{{ recipe.difficulty.name }}</span></div></li>
+                                <li><div><i class="the-icon fa fa-clock-o" title="Preparation time"></i> <span>{{ recipe.duration }} minutes</span></div></li>
+                            </ul>
+                        </div>
+
+                    </div> <!-- .entry-content -->
+                    <div class="clear"></div>
+
+                </div> <!-- .entry -->
+                <div class="clear"></div>
+
+
+            </div> <!-- .rw-row -->
+
+            <div class="rw-row light border-tb">
+                <div class="recipe-tags">
+                    <span class="tags-title">Tags:</span>
+                    <span class="tag"><a href="#">Chicken</a></span>
+                    <span class="tag"><a href="#">Chicken Roast</a></span>
+                    <span class="tag"><a href="#">Gluten-Free</a></span>
+                    <span class="tag"><a href="#">Low Carb</a></span>
+                    <span class="tag"><a href="#">Main Course</a></span>
+                    <span class="tag"><a href="#">Smoked Paprika</a></span>
+                </div>
+            </div> <!-- .rw-row -->
+
+        </div> <!-- .rw-content -->
+
+    </div> <!-- .rw-inner -->
+</div> <!-- .rw-container -->
+{% endblock %}
