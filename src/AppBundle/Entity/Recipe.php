@@ -75,11 +75,19 @@ class Recipe
     private $ingredients;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
      * Recipe constructor.
      */
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -247,5 +255,13 @@ class Recipe
         $this->difficulty = $difficulty;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
     }
 }

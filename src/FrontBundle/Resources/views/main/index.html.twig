@@ -74,7 +74,7 @@
                                         <a href="{{ path('view_recipe', {'id': latestRecipe.id}) }}">{{ latestRecipe.name }}</a>
                                     </div>
                                     <div class="entry-meta">
-                                        <span class="date">DATE</span>
+                                        <span class="date">{{ latestRecipe.createdAt|date }}</span>
                                     </div>
                                     <div class="entry-content">
                                         <p>{{ latestRecipe.description }}</p>
