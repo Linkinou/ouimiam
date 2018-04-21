@@ -205,13 +205,13 @@ $(document).ready(function(){
 		var array_key = smk_theme_generate_string( 5, false),
 		    the_ul    = $(this).prev('.submission-form-repeatable'),
 		    cloned    = $(the_ul).find('.sfa-noindex').clone();
-		
+
 		$( the_ul ).append( cloned );
 		cloned.removeClass('sfa-noindex');
 		cloned.find('input').each(function(){
-			// Update the 'rules[0]' part of the name attribute to contain the latest count 
+			// Update the 'rules[0]' part of the name attribute to contain the latest count
 			$(this).attr( 'name', $(this).attr( 'name' ).replace( '__noindex__', array_key ) );
-		}); 
+		});
 
 	});
 

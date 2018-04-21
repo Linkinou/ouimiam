@@ -69,7 +69,7 @@ class Recipe
     /**
      * @var ArrayCollection|Ingredient[]
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ingredient")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ingredient", mappedBy="recipes", cascade={"persist"})
      *
      */
     private $ingredients;
@@ -85,7 +85,7 @@ class Recipe
     /**
      * @return int
      */
-    public function getId(): ?int 
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -93,7 +93,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName() : ?string
     {
         return $this->name;
     }
@@ -102,7 +102,7 @@ class Recipe
      * @param string $name
      * @return $this
      */
-    public function setName(string $name)
+    public function setName(string $name) : Recipe
     {
         $this->name = $name;
 
@@ -121,7 +121,7 @@ class Recipe
      * @param Ingredient[]|ArrayCollection $ingredients
      * @return Recipe
      */
-    public function setIngredients(array $ingredients)
+    public function setIngredients(array $ingredients) : Recipe
     {
         $this->ingredients = $ingredients;
 
@@ -129,9 +129,35 @@ class Recipe
     }
 
     /**
+     * @param Ingredient $ingredient
+     * @return $this
+     */
+    public function addIngredient(Ingredient $ingredient) : Recipe
+    {
+        $ingredient->addRecipe($this);
+
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients->add($ingredient);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Ingredient $ingredient
+     * @return $this
+     */
+    public function removeIngredient(Ingredient $ingredient) : Recipe
+    {
+        $this->ingredients->remove($ingredient);
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -150,7 +176,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getPreparation(): string
+    public function getPreparation(): ?string
     {
         return $this->preparation;
     }
@@ -169,7 +195,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getCookingSteps(): string
+    public function getCookingSteps(): ?string
     {
         return $this->cookingSteps;
     }
@@ -188,7 +214,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getDuration(): string
+    public function getDuration(): ?string
     {
         return $this->duration;
     }
@@ -207,7 +233,7 @@ class Recipe
     /**
      * @return Difficulty
      */
-    public function getDifficulty(): Difficulty
+    public function getDifficulty(): ?Difficulty
     {
         return $this->difficulty;
     }

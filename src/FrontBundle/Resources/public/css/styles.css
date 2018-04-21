@@ -330,6 +330,7 @@ Rw Layout
   float: left;
 }
 .logo-holder .logo {
+  width: 160px;
   margin: 0 20px 0 0;
 }
 /* Rw container
@@ -4950,7 +4951,7 @@ Submission page
   left: 0;
   border-left: 1px solid #21aabd;
 }
-.submission-form-repeatable-add-new {
+.add-collection {
   display: inline-block;
   padding: 4px 8px;
   border-radius: 2px;
@@ -4963,7 +4964,7 @@ Submission page
   margin-bottom: 19px;
   cursor: pointer;
 }
-.submission-form-repeatable-add-new:before {
+.add-collection:before {
   content: " ";
   display: block;
   position: absolute;
@@ -4973,7 +4974,7 @@ Submission page
   left: 50%;
   background: #21aabd;
 }
-.submission-form-repeatable-add-new:after {
+.add-collection:after {
   content: " ";
   display: block;
   position: absolute;
@@ -4983,7 +4984,7 @@ Submission page
   width: 50%;
   background: #21aabd;
 }
-.submission-form-repeatable-add-new:hover {
+.add-collection:hover {
   background: #198392;
 }
 @media screen and (max-width: 900px) {

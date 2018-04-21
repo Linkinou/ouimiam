@@ -1,41 +1,6 @@
 AppBundle\Entity\Ingredient:
-    recipe_ingredient_0:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
+    ingredient_{0..30}:
+        name: <word()>
+        note: <sentence()>
         quantity: <randomDigit()>
-    recipe_ingredient_1:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_2:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_3:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_4:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_5:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_6:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_7:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_8:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
-    recipe_ingredient_9:
-        model: '@ingredient_model_*'
-        unit: '@unit_*'
-        quantity: <randomDigit()>
+        recipes: ['@recipe_*']

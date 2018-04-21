@@ -71,7 +71,7 @@
                                         <img src="{{ asset('bundles/front/placeholder/food/350x240/18.jpg') }}" alt="" />
                                     </div>
                                     <div class="entry-title">
-                                        <a href="#">{{ latestRecipe.name }}</a>
+                                        <a href="{{ path('view_recipe', {'id': latestRecipe.id}) }}">{{ latestRecipe.name }}</a>
                                     </div>
                                     <div class="entry-meta">
                                         <span class="date">DATE</span>

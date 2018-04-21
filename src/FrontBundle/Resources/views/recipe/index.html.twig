@@ -25,17 +25,16 @@
                     <div class="entry-content clearfix">
 
                         <div class="recipe-content">
-
                             <div class="single-recipe-ingredients">
                                 <h3 class="recipe-headlines ingredients first">Ingredients:</h3>
                                 <ul>
                                     {% for ingredient in recipe.ingredients %}
                                         <li>
                                             <div class="mark-as-ok"><i class="fa fa-check"></i></div>
-                                            <div class="ingredient"><a href="#">{{ ingredient.model.name }}</a></div>
+                                            <div class="ingredient"><a href="#">{{ ingredient.name }}</a></div>
                                             <div class="quantity">
-                                                <div class="qt">{{ ingredient.quantity }} {{ ingredient.unit.name }}</div>
-                                                <div class="qt-notes">Here are some additional notes regarding this ingredient. Aliquam eget vestibulum mauris, sed lacinia ante.</div>
+                                                <div class="qt">{{ ingredient.quantity }}</div>
+                                                <div class="qt-notes">{{ ingredient.note }}</div>
                                             </div>
                                         </li>
                                     {% endfor %}
