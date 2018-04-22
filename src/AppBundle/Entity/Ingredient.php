@@ -3,7 +3,10 @@
 namespace AppBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource
@@ -21,11 +24,25 @@ class Ingredient
     private $id;
 
     /**
-     * @var IngredientModel
+     * @var BaseIngredient
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\IngredientModel")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BaseIngredient")
      */
-    private $model;
+    private $baseIngredient;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var Unit
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Unit")
+     */
+    private $unit;
 
     /**
      * @var string
@@ -35,11 +52,19 @@ class Ingredient
     private $quantity;
 
     /**
-     * @var Unit
+     * @var ArrayCollection|Recipe[]
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Unit")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Recipe", inversedBy="ingredients")
      */
-    private $unit;
+    private $recipes;
+
+    /**
+     * Ingredient constructor.
+     */
+    public function __construct()
+    {
+        $this->recipes = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -61,20 +86,20 @@ class Ingredient
     }
 
     /**
-     * @return IngredientModel
+     * @return BaseIngredient
      */
-    public function getModel(): IngredientModel
+    public function getBaseIngredient(): ?BaseIngredient
     {
-        return $this->model;
+        return $this->baseIngredient;
     }
 
     /**
-     * @param IngredientModel $model
+     * @param BaseIngredient $baseIngredient
      * @return Ingredient
      */
-    public function setModel(IngredientModel $model): Ingredient
+    public function setBaseIngredient(BaseIngredient $baseIngredient): Ingredient
     {
-        $this->model = $model;
+        $this->baseIngredient = $baseIngredient;
 
         return $this;
     }
@@ -82,7 +107,7 @@ class Ingredient
     /**
      * @return string
      */
-    public function getQuantity(): string
+    public function getQuantity(): ?string
     {
         return $this->quantity;
     }
@@ -98,10 +123,71 @@ class Ingredient
         return $this;
     }
 
+
+    /**
+     * @return string
+     */
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param string $note
+     * @return Ingredient
+     */
+    public function setNote(string $note): Ingredient
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return Recipe[]|Collection
+     */
+    public function getRecipes() : Collection
+    {
+        return $this->recipes;
+    }
+
+    /**
+     * @param Recipe[]|ArrayCollection $recipes
+     * @return Ingredient
+     */
+    public function setRecipes(array $recipes)
+    {
+        $this->recipes = $recipes;
+
+        return $this;
+    }
+
+    /**
+     * @param Recipe $recipe
+     * @return Ingredient
+     */
+    public function addRecipe(Recipe $recipe) : Ingredient
+    {
+        $this->recipes->add($recipe);
+
+        return $this;
+    }
+
+    /**
+     * @param Recipe $recipe
+     * @return Ingredient
+     */
+    public function removeRecipe(Recipe $recipe) : Ingredient
+    {
+        $this->recipes->removeElement($recipe);
+
+        return $this;
+    }
+
     /**
      * @return Unit
      */
-    public function getUnit(): Unit
+    public function getUnit(): ?Unit
     {
         return $this->unit;
     }

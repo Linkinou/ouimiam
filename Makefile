@@ -1,5 +1,12 @@
 APP = docker-compose exec app
 CONSOLE = bin/console
+COMPOSER = composer
+
+assets:
+	$(APP) $(CONSOLE) assets:install
+
+install:
+	$(APP) $(COMPOSER) install
 
 cache-clear:
 	$(APP) $(CONSOLE) cache:clear --no-warmup || rm -rf var/cache/*

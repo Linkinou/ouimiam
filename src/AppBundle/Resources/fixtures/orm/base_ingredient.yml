@@ -1,0 +1,7 @@
+AppBundle\Entity\BaseIngredient:
+    base_ingredient_1:
+        name: 'Tomate'
+    base_ingredient_2:
+        name: 'Pomme de terre'
+    base_ingredient_3:
+        name: 'Sel'

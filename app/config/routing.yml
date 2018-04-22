@@ -1,6 +1,12 @@
+front:
+    resource: "@FrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 api:
     resource: '.'
     type: 'api_platform'
+    prefix: /api
 
 app:
     resource: '@AppBundle/Action/'

@@ -2,7 +2,6 @@ AppBundle\Entity\Recipe:
     recipe_{0..10}:
         name: <sentence()>
         description: <sentence(8, true)>
-        ingredients: ['@recipe_ingredient_*']
         preparation: <paragraph(100)>
         cookingSteps: <paragraph(50)>
         duration: <numberBetween()>

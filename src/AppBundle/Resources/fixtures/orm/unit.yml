@@ -1,11 +1,11 @@
 AppBundle\Entity\Unit:
-    unit_0:
-        name: 'cuillère à soupe'
     unit_1:
-        name: 'cuillère à café'
-    unit_2:
         name: 'g'
+    unit_2:
+        name: 'kg'
     unit_3:
         name: 'ml'
     unit_4:
-        name: 'une pincée'
+        name: 'cl'
+    unit_5:
+        name: 'l'
