@@ -2,9 +2,11 @@
 
 namespace FrontBundle\FormType;
 
+use AppBundle\Entity\BaseIngredient;
 use AppBundle\Entity\Difficulty;
 use AppBundle\Entity\Ingredient;
 use AppBundle\Entity\Recipe;
+use AppBundle\Entity\Unit;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -18,7 +20,9 @@ class IngredientFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add('baseIngredient', EntityType::class, [
+                'class' => BaseIngredient::class,
+                'choice_label' => 'name',
                 'attr' => [
                     'class' => 'this-section-title-field'
                 ]
@@ -28,6 +32,10 @@ class IngredientFormType extends AbstractType
                     'class' => 'this-section-label-field'
                 ]
             ])
+            ->add('unit', EntityType::class, [
+                'class' => Unit::class,
+                'choice_label' => 'name',
+            ])
             ->add('note', TextAreaType::class)
         ;
     }
@@ -36,7 +44,8 @@ class IngredientFormType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'data_class' => Ingredient::class
+                'data_class' => Ingredient::class,
+                'label' => false,
             ]
         );
     }

@@ -24,12 +24,11 @@ class Ingredient
     private $id;
 
     /**
-     * @var string
+     * @var BaseIngredient
      *
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BaseIngredient")
      */
-    private $name;
+    private $baseIngredient;
 
     /**
      * @var string
@@ -37,6 +36,13 @@ class Ingredient
      * @ORM\Column(type="text", nullable=true)
      */
     private $note;
+
+    /**
+     * @var Unit
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Unit")
+     */
+    private $unit;
 
     /**
      * @var string
@@ -80,6 +86,25 @@ class Ingredient
     }
 
     /**
+     * @return BaseIngredient
+     */
+    public function getBaseIngredient(): ?BaseIngredient
+    {
+        return $this->baseIngredient;
+    }
+
+    /**
+     * @param BaseIngredient $baseIngredient
+     * @return Ingredient
+     */
+    public function setBaseIngredient(BaseIngredient $baseIngredient): Ingredient
+    {
+        $this->baseIngredient = $baseIngredient;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getQuantity(): ?string
@@ -98,25 +123,6 @@ class Ingredient
         return $this;
     }
 
-
-    /**
-     * @return string
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     * @return Ingredient
-     */
-    public function setName(string $name): Ingredient
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -174,6 +180,25 @@ class Ingredient
     public function removeRecipe(Recipe $recipe) : Ingredient
     {
         $this->recipes->removeElement($recipe);
+
+        return $this;
+    }
+
+    /**
+     * @return Unit
+     */
+    public function getUnit(): ?Unit
+    {
+        return $this->unit;
+    }
+
+    /**
+     * @param Unit $unit
+     * @return Ingredient
+     */
+    public function setUnit(Unit $unit): Ingredient
+    {
+        $this->unit = $unit;
 
         return $this;
     }

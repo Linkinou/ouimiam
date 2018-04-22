@@ -1,6 +1,7 @@
 AppBundle\Entity\Ingredient:
     ingredient_{0..30}:
-        name: <word()>
+        baseIngredient: '@base_ingredient_*'
+        unit: '@unit_*'
         note: <sentence()>
         quantity: <randomDigit()>
         recipes: ['@recipe_*']

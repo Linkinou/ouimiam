@@ -2,7 +2,7 @@
 
     function update_live_text_labels( field, section ){
         $('.submission-form-repeatable li').each(function () {
-            var thisval = $(this).find(field).val();
+            var thisval = $(this).find(field + ' option:selected').text();
             $(this).find( section ).text( thisval )
         });
     }
@@ -50,9 +50,9 @@
             var the_ul    = $(this).prev('.submission-form-repeatable'),
                 cloned    = $(the_ul).find('.sfa-noindex').clone();
 
-            // $('.accordion_in').each(function () {
-            //     $(this).removeClass('acc_active')
-            // });
+                // $('.accordion_in').each(function () {
+                //     $(this).removeClass('acc_active')
+                // });
 
             var index = $collectionHolder.data('index');
             var prototype = $('#recipe_form_ingredients').data('prototype');
