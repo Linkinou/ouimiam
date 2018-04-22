@@ -1,0 +1,11 @@
+AppBundle\Entity\Unit:
+    unit_1:
+        name: 'g'
+    unit_2:
+        name: 'kg'
+    unit_3:
+        name: 'ml'
+    unit_4:
+        name: 'cl'
+    unit_5:
+        name: 'l'
