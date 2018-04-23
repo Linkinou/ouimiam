@@ -16,7 +16,7 @@ Header
                     <ul class="menu horizontal">
                         <li><a href="{{ path('home') }}">Home</a></li>
                         <li><a href="{{ path('recipe_collection_index') }}">Collections</a></li>
-                        <li><a href="{{ path('home') }}">Recettes</a></li>
+                        <li><a href="{{ path('recipe_index') }}">Recettes</a></li>
                     </ul>
                 </nav>
             </div>
@@ -141,6 +141,7 @@ Header
                         <li class="to-left-more">
                             <a href="#" class="menu-single-icon"><i class="fa fa-plus"></i></a>
                             <ul class="sub-menu">
+                                <li><a href="{{ path('submit_ingredient') }}">Ajouter un ingrédient</a></li>
                                 <li><a href="{{ path('submit_recipe') }}">Ajouter une recette</a></li>
                                 <li><a href="{{ path('submit_recipe_collection') }}">Ajouter une collection</a></li>
                             </ul>

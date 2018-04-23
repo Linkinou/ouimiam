@@ -43,6 +43,13 @@ class RecipeCollection
     private $createdAt;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
      * RecipeCollection constructor.
      */
     public function __construct()
@@ -119,6 +126,24 @@ class RecipeCollection
     {
         $this->recipes->removeElement($recipe);
 
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return RecipeCollection
+     */
+    public function setDescription(string $description): RecipeCollection
+    {
+        $this->description = $description;
         return $this;
     }
 

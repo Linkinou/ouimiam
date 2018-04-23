@@ -1,4 +1,6 @@
 AppBundle\Entity\Unit:
+    unit_0:
+        name: 'unité(s)'
     unit_1:
         name: 'g'
     unit_2:

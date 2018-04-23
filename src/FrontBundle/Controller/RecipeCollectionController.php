@@ -2,10 +2,12 @@
 
 namespace FrontBundle\Controller;
 
+use AppBundle\Entity\Ingredient;
 use AppBundle\Entity\Recipe;
 use AppBundle\Entity\RecipeCollection;
 use FrontBundle\FormType\RecipeCollectionFormType;
 use FrontBundle\FormType\RecipeFormType;
+use FrontBundle\Model\ShoppingListIngredient;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -56,6 +58,45 @@ class RecipeCollectionController extends Controller
         ];
     }
 
+
+    /**
+     * @param RecipeCollection $collection
+     *
+     * @Route("/recipe-collection/{id}/shopping-list", name="recipe_collection_shopping_list")
+     *
+     * @Template("@Front/recipe_collection/shopping_list.html.twig")
+     *
+     * @return array
+     */
+    public function shoppingListAction(RecipeCollection $collection)
+    {
+
+        $recipes = $collection->getRecipes();
+
+        $ingredientStack = [];
+        /** @var Recipe $recipe */
+        foreach ($recipes as $recipe) {
+            /** @var Ingredient $ingredient */
+            foreach ($recipe->getIngredients() as $ingredient) {
+                $ingredientName = $ingredient->getBaseIngredient()->getName();
+
+                if (array_key_exists($ingredientName, $ingredientStack)) {
+                    $ingredientStack[$ingredientName]->cumulateIngredient($ingredient);
+                } else {
+                    $ingredientStack[$ingredientName] = new ShoppingListIngredient(
+                        $ingredientName,
+                        $ingredient->getUnit()->getName(),
+                        $ingredient->getQuantity()
+                    );
+                }
+            }
+        }
+
+        return [
+            'ingredients' => $ingredientStack,
+             'collection' => $collection
+        ];
+    }
 //    /**
 //     * @param Request $request
 //     *
