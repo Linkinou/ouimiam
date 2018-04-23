@@ -82,11 +82,19 @@ class Recipe
     private $createdAt;
 
     /**
+     * @var ArrayCollection|RecipeCollection[]
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\RecipeCollection", inversedBy="recipes")
+     */
+    private $collections;
+
+    /**
      * Recipe constructor.
      */
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
+        $this->collections = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
 
@@ -263,5 +271,46 @@ class Recipe
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return RecipeCollection[]|ArrayCollection
+     */
+    public function getCollections()
+    {
+        return $this->collections;
+    }
+
+    /**
+     * @param RecipeCollection[]|ArrayCollection $collections
+     * @return Recipe
+     */
+    public function setCollections($collections)
+    {
+        $this->collections = $collections;
+
+        return $this;
+    }
+
+    /**
+     * @param RecipeCollection $collection
+     * @return $this
+     */
+    public function addCollection(RecipeCollection $collection)
+    {
+        $this->collections->add($collection);
+
+        return $this;
+    }
+
+    /**
+     * @param RecipeCollection $collection
+     * @return $this
+     */
+    public function removeCollection(RecipeCollection $collection)
+    {
+        $this->collections->removeElement($collection);
+
+        return $this;
     }
 }
