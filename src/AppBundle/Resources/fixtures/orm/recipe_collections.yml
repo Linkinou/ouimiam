@@ -1,0 +1,5 @@
+AppBundle\Entity\RecipeCollection:
+    r_collection_{0..10}:
+        name: <sentence()>
+        description: <sentence(8, true)>
+        recipes: ['@recipe_*', '@recipe_*', '@recipe_*']

@@ -2,7 +2,9 @@
 
 namespace FrontBundle\Controller;
 
+use AppBundle\Entity\BaseIngredient;
 use AppBundle\Entity\Recipe;
+use FrontBundle\FormType\BaseIngredientFormType;
 use FrontBundle\FormType\RecipeFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -10,43 +12,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RecipeController extends Controller
+class IngredientController extends Controller
 {
-
     /**
      * @param Request $request
      *
-     * @Route("/recipes", name="recipe_index")
+     * @Route("/ingredient/submit", name="submit_ingredient")
      *
-     * @Template("@Front/recipe/index.html.twig")
+     * @Template("@Front/ingredient/submit.html.twig")
      * @return array
      */
-    public function indexAction(Request $request)
+    public function submitIngredientAction(Request $request)
     {
-        return [
-            'recipes' => $this->getDoctrine()->getRepository(Recipe::class)->findAll()
-        ];
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @Route("/recipe/submit", name="submit_recipe")
-     *
-     * @Template("@Front/recipe/submit.html.twig")
-     * @return array
-     */
-    public function submitRecipeAction(Request $request)
-    {
-        $form = $this->createForm(RecipeFormType::class);
+        $form = $this->createForm(BaseIngredientFormType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newRecipe = $form->getData();
+            $ingredient = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newRecipe);
+            $em->persist($ingredient);
             $em->flush();
         }
 

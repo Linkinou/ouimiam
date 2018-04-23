@@ -1,6 +1,6 @@
 {% extends '@Front/base.html.twig' %}
 
-{% block title %}OuiFood - Les recipes de recettes{% endblock %}
+{% block title %}OuiFood - Les collections de recettes{% endblock %}
 
 {% block body %}
     <div class="rw-section rw-container">
@@ -9,16 +9,16 @@
             <div class="rw-column rw-content">
 
                 <div class="rw-row page-breadcrumb">
-                    <a href="#">Home</a> &raquo; <span>Recettes de recettes</span>
+                    <a href="#">Home</a> &raquo; <span>Collections de recettes</span>
                 </div>
                 <div class="rw-row page-title">
-                    <h1>Recettes de recettes</h1>
+                    <h1>Collections de recettes</h1>
                 </div>
 
                 <div class="rw-row">
 
                     <div class="recipes-list">
-                        {% for recipe in recipes %}
+                        {% for collection in collections %}
                             <!-- Entry -->
                             <div class="recipe clearfix">
 
@@ -31,17 +31,17 @@
 
                                         <div class="grid desk-8 omega">
                                             <div class="entry-title">
-                                                <h2><a href="{{ path('view_recipe', {'id': recipe.id}) }}">{{ recipe.name }}</a></h2>
+                                                <h2><a href="{{ path('view_recipe_collection', {'id': collection.id}) }}">{{ collection.name }}</a></h2>
                                             </div>
                                             <div class="entry-controls minimal">
-                                                <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">{{ recipe.createdAt|date }}</span>
+                                                <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">{{ collection.createdAt|date }}</span>
                                                 <a href="#" class="control entry-to-favorites" title="Add to favorites"> <i class="fa fa-heart-o"></i> </a><span class="control-tip">44</span>
                                                 <a href="#" class="control entry-like" title="I like this!"> <i class="fa fa-thumbs-o-up"></i> </a> <span class="control-tip">294</span>
                                                 <a href="#" class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </a> <span class="control-tip">2 comments</span>
                                                 <div class="control"> <i class="fa fa-bar-chart"></i> </div> <span class="control-tip">1810 views</span>
                                             </div>
                                             <div class="entry-content">
-                                                <p>{{ recipe.description }}</p>
+                                                <p>{{ collection.description }}</p>
                                             </div>
                                             <div class="entry-info-author">
                                                 <img src="assets/placeholder/people/50x50/5.jpg" alt="" />
@@ -60,12 +60,12 @@
                                     <div class="info preparation">
                                         <i class="the-icon fa fa-clock-o"></i>
                                         <span class="type">Preparation</span>
-                                        <span class="value">{{ recipe.duration }}</span>
+                                        <span class="value">40 minutes</span>
                                     </div>
                                     <div class="info ingredients">
                                         <i class="the-icon fa fa-flask"></i>
                                         <span class="type">Contains</span>
-                                        <span class="value">{{ recipe.ingredients|length }} ingredients</span>
+                                        <span class="value">9 ingredients</span>
                                     </div>
                                     <div class="info category">
                                         <i class="the-icon fa fa-book"></i>
@@ -75,7 +75,7 @@
                                     <div class="info difficulty moderate">
                                         <i class="the-icon fa fa-tasks"></i>
                                         <span class="type">Difficulty</span>
-                                        <span class="value">{{ recipe.difficulty.name }}</span>
+                                        <span class="value">Moderate</span>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
