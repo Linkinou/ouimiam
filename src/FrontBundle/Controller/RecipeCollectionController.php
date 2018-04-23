@@ -56,46 +56,46 @@ class RecipeCollectionController extends Controller
         ];
     }
 
+//    /**
+//     * @param Request $request
+//     *
+//     * @param Recipe $recipe
+//     * @return array
+//     * @Route("/recipe/{id}/edit", name="edit_recipe")
+//     *
+//     * @Template("@Front/recipe/edit.html.twig")
+//     */
+//    public function editRecipe(Request $request, Recipe $recipe)
+//    {
+//        $form = $this->createForm(RecipeFormType::class, $recipe);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $recipe = $form->getData();
+//
+//
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($recipe);
+//            $em->flush();
+//        }
+//
+//        return [
+//            'form' => $form->createView()
+//        ];
+//    }
+
     /**
-     * @param Request $request
+     * @param RecipeCollection $recipeCollection
      *
-     * @param Recipe $recipe
-     * @return array
-     * @Route("/recipe/{id}/edit", name="edit_recipe")
+     * @Route("/recipe-collection/{id}", name="view_recipe_collection")
      *
-     * @Template("@Front/recipe/edit.html.twig")
-     */
-    public function editRecipe(Request $request, Recipe $recipe)
-    {
-        $form = $this->createForm(RecipeFormType::class, $recipe);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $recipe = $form->getData();
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($recipe);
-            $em->flush();
-        }
-
-        return [
-            'form' => $form->createView()
-        ];
-    }
-
-    /**
-     * @param Recipe $recipe
-     *
-     * @Route("/recipe/{id}", name="view_recipe")
-     *
-     * @Template("@Front/recipe/index.html.twig")
+     * @Template("@Front/recipe_collection/view.html.twig")
      * @return array
      */
-    public function viewRecipeAction(Recipe $recipe)
+    public function viewRecipeAction(RecipeCollection $recipeCollection)
     {
         return [
-            'recipe' => $recipe,
+            'collection' => $recipeCollection,
         ];
     }
 }
