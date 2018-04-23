@@ -3,6 +3,8 @@
 namespace FrontBundle\Controller;
 
 use AppBundle\Entity\Recipe;
+use AppBundle\Entity\RecipeCollection;
+use FrontBundle\FormType\RecipeCollectionFormType;
 use FrontBundle\FormType\RecipeFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -10,41 +12,42 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RecipeController extends Controller
+class RecipeCollectionController extends Controller
 {
-
     /**
      * @param Request $request
      *
-     * @Route("/recipes", name="recipe_index")
+     * @Route("/recipe-collections", name="recipe_collection_index")
      *
-     * @Template("@Front/recipe/index.html.twig")
+     * @Template("@Front/recipe_collection/index.html.twig")
      * @return array
      */
     public function indexAction(Request $request)
     {
-        return [];
+        return [
+            'collections' => $this->getDoctrine()->getRepository(RecipeCollection::class)->findAll()
+        ];
     }
 
     /**
      * @param Request $request
      *
-     * @Route("/recipe/submit", name="submit_recipe")
+     * @Route("/recipe-collection/submit", name="submit_recipe_collection")
      *
-     * @Template("@Front/recipe/submit.html.twig")
+     * @Template("@Front/recipe_collection/submit.html.twig")
      * @return array
      */
-    public function submitRecipeAction(Request $request)
+    public function submitRecipe(Request $request)
     {
-        $form = $this->createForm(RecipeFormType::class);
+        $form = $this->createForm(RecipeCollectionFormType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $newRecipe = $form->getData();
+            $recipeCollection = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($newRecipe);
+            $em->persist($recipeCollection);
             $em->flush();
         }
 
@@ -62,7 +65,7 @@ class RecipeController extends Controller
      *
      * @Template("@Front/recipe/edit.html.twig")
      */
-    public function editRecipeAction(Request $request, Recipe $recipe)
+    public function editRecipe(Request $request, Recipe $recipe)
     {
         $form = $this->createForm(RecipeFormType::class, $recipe);
         $form->handleRequest($request);
@@ -86,7 +89,7 @@ class RecipeController extends Controller
      *
      * @Route("/recipe/{id}", name="view_recipe")
      *
-     * @Template("@Front/recipe/view.html.twig")
+     * @Template("@Front/recipe/index.html.twig")
      * @return array
      */
     public function viewRecipeAction(Recipe $recipe)

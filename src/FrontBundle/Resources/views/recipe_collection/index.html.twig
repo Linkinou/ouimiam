@@ -1,94 +1,108 @@
 {% extends '@Front/base.html.twig' %}
 
-{% block title %}OuiFood - EatList{% endblock %}
+{% block title %}OuiFood - Les collections de recettes{% endblock %}
 
 {% block body %}
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+            <!-- Main content -->
+            <div class="rw-column rw-content">
 
-<div class="rw-container rw-section">
-    <div class="rw-inner clearfix">
-
-        <!-- Main content -->
-        <div class="rw-column rw-content">
-
-            <div class="rw-row page-breadcrumb">
-                <a href="{{ path('home') }}">Home</a> &raquo; <a href="#">Recipes</a> &raquo; <span>{{ recipe.name }}</span>
-            </div>
-            <div class="rw-row page-title">
-                <h1>{{ recipe.name }}</h1>
-            </div>
-
-            <div class="rw-row">
-                <div class="entry style-columns">
-                    <div class="entry-photo single-recipe-photo-cover">
-                        <img src="{{ asset('bundles/front/placeholder/1.jpg') }}" alt="">
-                    </div>
-                    <div class="entry-content clearfix">
-
-                        <div class="recipe-content">
-                            <div class="single-recipe-ingredients">
-                                <h3 class="recipe-headlines ingredients first">Ingredients:</h3>
-                                <ul>
-                                    {% for ingredient in recipe.ingredients %}
-                                        <li>
-                                            <div class="mark-as-ok"><i class="fa fa-check"></i></div>
-                                            <div class="ingredient"><a href="#">{{ ingredient.baseIngredient.name }}</a></div>
-                                            <div class="quantity">
-                                                <div class="qt">{{ ingredient.quantity }} {{ ingredient.unit.name }}</div>
-                                                <div class="qt-notes">{{ ingredient.note }}</div>
-                                            </div>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-
-                            <h3 class="recipe-headlines preparation-mode">Preparation mode:</h3>
-                            {{ recipe.preparation|raw }}
-
-                            <h3 class="recipe-headlines preparation-mode">Cooking steps:</h3>
-                            {{ recipe.cookingSteps|raw }}
-                        </div>
-
-                        <div class="recipe-meta">
-                            <ul>
-                                <li>
-                                    <div class="entry-info-author">
-                                        <img src="{{ asset('bundles/front/placeholder/50-3.jpg') }}" >
-                                        <div class="author-name"><a href="#">Sandra Williams</a> <span class="mark green" title="Pro member!">Pro</span></div>
-                                        <div><a href="#" class="follow-user button mini blue" title="851 followers">
-                                                <i class="fa fa-plus"></i> <span class="text">Follow</span>
-                                            </a></div>
-                                    </div>
-                                </li>
-                                <li><i class="the-icon fa fa-calendar" title="Submited on 21 Aug 2014"></i> <span>21 Aug 2014</span></li>
-                                <li><div><i class="the-icon fa fa-book" title="Category"></i> <span><a href="#">Desserts</a></span></div></li>
-                                <li><div><i class="the-icon fa fa-tasks" title="Difficulty"></i> <span>{{ recipe.difficulty.name }}</span></div></li>
-                                <li><div><i class="the-icon fa fa-clock-o" title="Preparation time"></i> <span>{{ recipe.duration }} minutes</span></div></li>
-                            </ul>
-                        </div>
-
-                    </div> <!-- .entry-content -->
-                    <div class="clear"></div>
-
-                </div> <!-- .entry -->
-                <div class="clear"></div>
-
-
-            </div> <!-- .rw-row -->
-
-            <div class="rw-row light border-tb">
-                <div class="recipe-tags">
-                    <span class="tags-title">Tags:</span>
-                    <span class="tag"><a href="#">Chicken</a></span>
-                    <span class="tag"><a href="#">Chicken Roast</a></span>
-                    <span class="tag"><a href="#">Gluten-Free</a></span>
-                    <span class="tag"><a href="#">Low Carb</a></span>
-                    <span class="tag"><a href="#">Main Course</a></span>
-                    <span class="tag"><a href="#">Smoked Paprika</a></span>
+                <div class="rw-row page-breadcrumb">
+                    <a href="#">Home</a> &raquo; <span>Collections de recettes</span>
                 </div>
-            </div> <!-- .rw-row -->
+                <div class="rw-row page-title">
+                    <h1>Collections de recettes</h1>
+                </div>
 
-        </div> <!-- .rw-content -->
+                <div class="rw-row">
 
-    </div> <!-- .rw-inner -->
-</div> <!-- .rw-container -->
+                    <div class="recipes-list">
+                        {% for collection in collections %}
+                            <!-- Entry -->
+                            <div class="recipe clearfix">
+
+                                <div class="recipe-main-info clearfix">
+                                    <div class="grid-container">
+
+                                        <div class="entry-photo grid desk-4 alpha">
+                                            <img src="{{ asset('bundles/front/placeholder/food/240x220/11.jpg') }}" alt="" />
+                                        </div>
+
+                                        <div class="grid desk-8 omega">
+                                            <div class="entry-title">
+                                                <h2><a href="#">{{ collection.name }}</a></h2>
+                                            </div>
+                                            <div class="entry-controls minimal">
+                                                <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">{{ collection.createdAt|date }}</span>
+                                                <a href="#" class="control entry-to-favorites" title="Add to favorites"> <i class="fa fa-heart-o"></i> </a><span class="control-tip">44</span>
+                                                <a href="#" class="control entry-like" title="I like this!"> <i class="fa fa-thumbs-o-up"></i> </a> <span class="control-tip">294</span>
+                                                <a href="#" class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </a> <span class="control-tip">2 comments</span>
+                                                <div class="control"> <i class="fa fa-bar-chart"></i> </div> <span class="control-tip">1810 views</span>
+                                            </div>
+                                            <div class="entry-content">
+                                                <p>Septima ossibus deliciae superbam praecustodio gualitatibus glaebam eminentiam destitutus. Firmare navigabile possessores hibernorum. Liber apparct legitima titulo massam mentis.</p>
+                                            </div>
+                                            <div class="entry-info-author">
+                                                <img src="assets/placeholder/people/50x50/5.jpg" alt="" />
+                                                <div class="author-name"><a href="#">Laura Gonzalez</a></div>
+                                                <div class="total-recipes">220 recipes</div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+
+                                    </div> <!-- .grid-container -->
+                                </div>
+
+                                <div class="recipe-info-pointer"><i class="the-icon fa fa-angle-double-left"></i></div>
+
+                                <div class="recipe-info clearfix">
+                                    <div class="info preparation">
+                                        <i class="the-icon fa fa-clock-o"></i>
+                                        <span class="type">Preparation</span>
+                                        <span class="value">40 minutes</span>
+                                    </div>
+                                    <div class="info ingredients">
+                                        <i class="the-icon fa fa-flask"></i>
+                                        <span class="type">Contains</span>
+                                        <span class="value">9 ingredients</span>
+                                    </div>
+                                    <div class="info category">
+                                        <i class="the-icon fa fa-book"></i>
+                                        <span class="type">Category</span>
+                                        <span class="value">Desserts</span>
+                                    </div>
+                                    <div class="info difficulty moderate">
+                                        <i class="the-icon fa fa-tasks"></i>
+                                        <span class="type">Difficulty</span>
+                                        <span class="value">Moderate</span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+
+                            </div> <!-- .entry -->
+                            <div class="clear"></div>
+                        {% endfor %}
+
+                    </div> <!-- .recipes-list -->
+
+                    {#<div class="recipes-pagination button-block center">#}
+                        {#<a class="button small nobg primary" href="#">&larr; Prev</a>#}
+                        {#<a class="button small nobg primary" href="#">...</a>#}
+                        {#<span class="button small nobg primary current">4</span>#}
+                        {#<a class="button small nobg primary" href="#">5</a>#}
+                        {#<a class="button small nobg primary" href="#">6</a>#}
+                        {#<a class="button small nobg primary" href="#">...</a>#}
+                        {#<a class="button small nobg primary" href="#">192</a>#}
+                        {#<a class="button small nobg primary" href="#">Next &rarr;</a>#}
+                    {#</div>#}
+
+
+                </div>
+
+            </div>
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
 {% endblock %}
