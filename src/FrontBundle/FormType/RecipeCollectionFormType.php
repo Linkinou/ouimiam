@@ -19,6 +19,7 @@ class RecipeCollectionFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
+            ->add('description', TextAreaType::class)
             ->add('recipes', EntityType::class, [
                 'class' => Recipe::class,
                 'choice_label' => 'name',

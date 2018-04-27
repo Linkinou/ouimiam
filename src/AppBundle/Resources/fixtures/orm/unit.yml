@@ -11,3 +11,7 @@ AppBundle\Entity\Unit:
         name: 'cl'
     unit_5:
         name: 'l'
+    unit_6:
+        name: 'cuillère à café'
+    unit_7:
+        name: 'cuillère à soupe'
