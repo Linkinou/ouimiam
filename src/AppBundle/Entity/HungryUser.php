@@ -3,11 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity()
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
 class HungryUser implements UserInterface, EquatableInterface
 {
@@ -24,6 +28,8 @@ class HungryUser implements UserInterface, EquatableInterface
      * @var string
      *
      * @ORM\Column(type="string", unique=true)
+     *
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -31,6 +37,9 @@ class HungryUser implements UserInterface, EquatableInterface
      * @var string
      *
      * @ORM\Column(type="string", unique=true)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -44,9 +53,10 @@ class HungryUser implements UserInterface, EquatableInterface
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @Assert\Length(max=4096)
+     * @Assert\NotBlank()
      */
-    private $salt;
+    private $plainPassword;
 
     /**
      * @var array
@@ -55,23 +65,6 @@ class HungryUser implements UserInterface, EquatableInterface
      */
     private $roles;
 
-
-
-    /**
-     * @param $username
-     * @param $email
-     * @param $password
-     * @param $salt
-     * @param $roles
-     */
-    public function __construct($username, $email, $password, $salt, $roles)
-    {
-        $this->username = $username;
-        $this->email = $email;
-        $this->password = $password;
-        $this->salt = $salt;
-        $this->roles = $roles;
-    }
 
     /**
      * @return int
@@ -100,9 +93,17 @@ class HungryUser implements UserInterface, EquatableInterface
     /**
      * @return string
      */
-    public function getSalt(): string
+    public function getPlainPassword(): string
     {
-        return $this->salt;
+        return $this->plainPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSalt(): ?string
+    {
+        return null;
     }
 
     /**
@@ -119,6 +120,66 @@ class HungryUser implements UserInterface, EquatableInterface
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    /**
+     * @param int $id
+     * @return HungryUser
+     */
+    public function setId(int $id): HungryUser
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @param string $username
+     * @return HungryUser
+     */
+    public function setUsername(string $username): HungryUser
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @param string $email
+     * @return HungryUser
+     */
+    public function setEmail(string $email): HungryUser
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @param string $password
+     * @return HungryUser
+     */
+    public function setPassword(string $password): HungryUser
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @param string $plainPassword
+     * @return HungryUser
+     */
+    public function setPlainPassword(string $plainPassword): HungryUser
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * @param array $roles
+     * @return HungryUser
+     */
+    public function setRoles(array $roles): HungryUser
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
     /**

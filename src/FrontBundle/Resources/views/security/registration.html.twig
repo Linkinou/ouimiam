@@ -1,0 +1,214 @@
+{% extends '@Front/base.html.twig' %}
+
+{% block title %}OuiFood - Les collections de recettes{% endblock %}
+
+{% block body %}
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+            <!-- Main content -->
+            <div class="rw-column rw-content">
+
+                <div class="rw-row page-breadcrumb">
+                    <a href="#">Home</a> &raquo; <a href="#">Pages</a> &raquo; <span>Form</span>
+                </div>
+                <div class="rw-row page-title">
+                    <h1>Form</h1>
+                </div>
+
+                <div class="rw-row">
+
+                    <div class="grid-container">
+                        <form>
+                            <div class="form-label">Text input</div>
+                            <div class="grid desk-12 both">
+                                <div class="form-description">This a description for the below field.</div>
+                                <input type="text" class="fullwidth" />
+                            </div>
+
+                            <div class="grid desk-6 alpha">
+                                <div class="form-label">Fullwidth input</div>
+                                <input type="text" class="fullwidth" />
+                            </div>
+
+                            <div class="grid desk-6 omega">
+                                <div class="form-label">Default input</div>
+                                <input type="text" />
+                            </div>
+
+                            <div class="grid desk-6 alpha">
+                                <div class="form-label">Fullwidth select</div>
+                                <select class="fullwidth">
+                                    <option>My first option</option>
+                                    <option>My second option</option>
+                                    <option>My third option</option>
+                                    <option>My forth option</option>
+                                </select>
+                            </div>
+
+                            <div class="grid desk-6 omega">
+                                <div class="form-label">Default select</div>
+                                <select>
+                                    <option>My first option</option>
+                                    <option>My second option</option>
+                                    <option>My third option</option>
+                                    <option>My forth option</option>
+                                </select>
+                            </div>
+
+                            <div class="grid desk-6 alpha">
+                                <div class="form-label">Radio</div>
+                                <label><input type="radio" name="sex" value="male">Male</label><br>
+                                <label><input type="radio" name="sex" value="female">Female</label><br>
+                                <label><input type="radio" name="sex" value="notspecified" checked="checked">Not specified</label><br>
+                                <label><input type="radio" name="sex" value="alien" disabled="disabled">Alien(disabled)</label><br><br>
+                            </div>
+
+                            <div class="grid desk-6 omega">
+                                <div class="form-label">Checkbox</div>
+                                <label><input type="checkbox" name="vehicle" value="Bike">I have a bike</label><br>
+                                <label><input type="checkbox" name="vehicle" value="Car" checked="checked">I have a car</label> <br>
+                                <label><input type="checkbox" name="vehicle" value="other">Other</label> <br>
+                                <label><input type="checkbox" name="vehicle" value="nothing" disabled />Nothing(disabled)</label> <br><br>
+                            </div>
+
+                            <div class="grid desk-12 both">
+                                <div class="form-label">Visual select</div>
+                                <div class="visual-select">
+                                    <label><input type="radio" value="y" data-label="Yes" checked />Yes</label>
+                                    <label><input type="radio" value="n" data-label="No" />No</label>
+                                    <label><input type="radio" value="dn" data-label="I dont know" />I dont know</label>
+                                    <label><input type="radio" value="m" data-label="Maybe" />Maybe</label>
+                                </div>
+                            </div>
+
+                            <div class="grid desk-12 both">
+                                <div class="form-label">Textarea</div>
+                                <textarea></textarea>
+                            </div>
+
+                            <div class="grid desk-12 both">
+                                <div class="form-label">Repeatable</div>
+                                <div class="form-description">Click "Add new" button to create a new section, Edit fields to see headings updating in real time, etc.</div>
+                                <!-- Accordion begin -->
+                                <ul class="submission-form-repeatable">
+
+                                    <li class="sfa-noindex">
+                                        <div>
+                                            <span class="section-title mark light-gray"></span>
+                                            <span class="delete-section mark red" title="Delete"><i class="fa fa-close"></i></span>
+                                            <span class="section-label mark blue"></span>
+                                        </div>
+                                        <div>
+                                            <div class="grid-container">
+                                                <div class="grid desk-6">
+                                                    <div class="form-label">Field example 1:</div>
+                                                    <input name="ex[__noindex__][]" type="text" class="fullwidth this-section-title-field" value="" />
+                                                </div>
+                                                <div class="grid desk-6">
+                                                    <div class="form-label">Field example 2:</div>
+                                                    <input name="ex[__noindex__][]" type="text" class="fullwidth this-section-label-field" value="" />
+                                                </div>
+
+                                                <div class="grid desk-12">
+                                                    <div class="form-label">Field example 3:</div>
+                                                    <input name="ex[__noindex__][]" type="text" class="fullwidth" value="" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <span class="section-title mark light-gray">Title field</span>
+                                            <span class="delete-section mark red" title="Delete"><i class="fa fa-close"></i></span>
+                                            <span class="section-label mark blue">Label field</span>
+                                        </div>
+                                        <div>
+                                            <div class="grid-container">
+                                                <div class="grid desk-6">
+                                                    <div class="form-label">Field example 1</div>
+                                                    <input name="ex[0][]" type="text" class="fullwidth this-section-title-field" value="Title field" />
+                                                </div>
+                                                <div class="grid desk-6">
+                                                    <div class="form-label">Field example 2:</div>
+                                                    <input name="ex[0][]" type="text" class="fullwidth this-section-label-field" value="Label field" />
+                                                </div>
+
+                                                <div class="grid desk-12">
+                                                    <div class="form-label">Field example 3:</div>
+                                                    <input name="ex[0][]" type="text" class="fullwidth" value="Something else" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div>
+                                            <span class="section-title mark light-gray">Main field, the title</span>
+                                            <span class="delete-section mark red" title="Delete"><i class="fa fa-close"></i></span>
+                                            <span class="section-label mark blue">Secondary, the label</span>
+                                        </div>
+                                        <div>
+                                            <div class="grid-container">
+                                                <div class="grid desk-6">
+                                                    <div class="form-label">Field example 1</div>
+                                                    <input name="ex[1][]" type="text" class="fullwidth this-section-title-field" value="Main field" />
+                                                </div>
+                                                <div class="grid desk-6">
+                                                    <div class="form-label">Field example 2:</div>
+                                                    <input name="ex[1][]" type="text" class="fullwidth this-section-label-field" value="Secondary, the label" />
+                                                </div>
+
+                                                <div class="grid desk-12">
+                                                    <div class="form-label">Field example 3:</div>
+                                                    <input name="ex[1][]" type="text" class="fullwidth" value="" />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <!-- Accordion end -->
+
+                                <div class="submission-form-repeatable-add-new"><i class="the-icon fa fa-plus"></i> Add new</div>
+
+                            </div>
+
+                            <div class="grid desk-12 both">
+                                <div class="form-label">Image Uploader</div>
+                                <div class="form-description">This is just an example, only the UI. Means that it is not working, as it requires the client and server side scripts.</div>
+                                <div class="image-uploader">
+                                    <div class="images">
+                                        <div class="image">
+                                            <img src="assets/placeholder/80x80.png" alt="" />
+                                            <span class="remove" title="Remove"><i class="fa fa-trash"></i></span>
+                                        </div>
+                                        <div class="image">
+                                            <img src="assets/placeholder/80x80.png" alt="" />
+                                            <span class="remove" title="Remove"><i class="fa fa-trash"></i></span>
+                                        </div>
+                                        <div class="image">
+                                            <img src="assets/placeholder/80x80.png" alt="" />
+                                            <span class="remove" title="Remove"><i class="fa fa-trash"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="upload" title="Select images to upload"><i class="fa fa-upload"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="grid desk-12 both">
+                                <input type="submit" value="Save changes" class="button primary" />
+                            </div>
+
+                        </form>
+                    </div> <!-- .grid-container -->
+
+                </div> <!-- .rw-row -->
+
+            </div> <!-- .rw-content -->
+        </div>
+    </div>
+{% endblock %}
