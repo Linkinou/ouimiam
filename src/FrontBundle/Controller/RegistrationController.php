@@ -14,7 +14,7 @@ class RegistrationController extends Controller
 {
     /**
      * @param Request $request
-     * @param UserPasswordEncoderInterface $encoder
+     * @param UserPasswordEncoderInterface $passwordEncoder
      *
      * @Route("/registration", name="user_registration")
      *
@@ -22,7 +22,7 @@ class RegistrationController extends Controller
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function RegistrationAction(Request $request, UserPasswordEncoderInterface $encoder)
+    public function RegistrationAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new HungryUser();
         $form = $this->createForm(HungryUserFormType::class, $user);
@@ -30,7 +30,7 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $password = $encoder->encodePassword($user, $user->getPlainPassword());
+            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
             $em = $this->getDoctrine()->getManager();

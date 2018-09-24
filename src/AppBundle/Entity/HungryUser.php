@@ -77,7 +77,7 @@ class HungryUser implements UserInterface, EquatableInterface
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -85,7 +85,7 @@ class HungryUser implements UserInterface, EquatableInterface
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -93,7 +93,7 @@ class HungryUser implements UserInterface, EquatableInterface
     /**
      * @return string
      */
-    public function getPlainPassword(): string
+    public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
@@ -117,7 +117,7 @@ class HungryUser implements UserInterface, EquatableInterface
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }

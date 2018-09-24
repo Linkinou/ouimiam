@@ -3,8 +3,8 @@
 security:
 
     encoders:
-            AppBundle\Security\User\HungryUserProvider: bcrypt
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+        AppBundle\Entity\HungryUser:
+          algorithm: bcrypt
     providers:
         hungry_user_provider:
             entity:
@@ -24,7 +24,7 @@ security:
             form_login:
                 check_path: security_login_check
                 login_path: security_login_form
-                csrf_provider: security.csrf.token_manager
+#                csrf_provider: security.csrf.token_manager
 
                 default_target_path: user_dashboard
                 always_use_default_target_path: true
