@@ -4,7 +4,6 @@ namespace FrontBundle\Controller;
 
 use AppBundle\Entity\Recipe;
 use FrontBundle\FormType\RecipeFormType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,0 +1,9 @@
+services:
+
+  FrontBundle\Controller\RegistrationController:
+      autowire: true
+      tags: ['controller.service_arguments']
+
+  FrontBundle\Controller\SecurityController:
+      autowire: true
+      tags: ['controller.service_arguments']

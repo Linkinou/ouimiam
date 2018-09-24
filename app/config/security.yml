@@ -2,10 +2,14 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        AppBundle\Entity\HungryUser:
+          algorithm: bcrypt
     providers:
-        in_memory:
-            memory: ~
+        hungry_user_provider:
+            entity:
+                class: AppBundle:HungryUser
+                property: email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,11 +18,16 @@ security:
             security: false
 
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            pattern:    ^/
+            anonymous: true
+            provider: hungry_user_provider
+            form_login:
+                check_path: user_login
+                login_path: user_login
+            logout:
+                path: security_logout
+                target: home
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/account/signup, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account, roles: ROLE_USER }

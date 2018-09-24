@@ -1,17 +1,12 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/service_container.html
+imports:
+    - { resource: '@AppBundle/Resources/config/services.yml' }
+
 parameters:
-    #parameter_name: value
 
 services:
-    # default configuration for services in *this* file
     _defaults:
-        # automatically injects dependencies in your services
         autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
         autoconfigure: true
-        # this means you cannot fetch services directly from the container via $container->get()
-        # if you need to do this, you can override this setting on individual services
         public: false
 
     # makes classes in src/AppBundle available to be used as services
@@ -28,8 +23,3 @@ services:
         resource: '../../src/AppBundle/Action'
         public: true
         tags: ['controller.service_arguments']
-
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
