@@ -63,7 +63,7 @@ class HungryUser implements UserInterface, EquatableInterface
      *
      * @ORM\Column(type="array")
      */
-    private $roles;
+    private $roles = [];
 
 
     /**
@@ -192,10 +192,6 @@ class HungryUser implements UserInterface, EquatableInterface
         }
 
         if ($this->password !== $user->getPassword()) {
-            return false;
-        }
-
-        if ($this->salt !== $user->getSalt()) {
             return false;
         }
 

@@ -8,7 +8,7 @@ security:
     providers:
         hungry_user_provider:
             entity:
-                class: AppBundle:HungryUserProvider
+                class: AppBundle:HungryUser
                 property: email
 
     firewalls:
@@ -22,12 +22,8 @@ security:
             anonymous: true
             provider: hungry_user_provider
             form_login:
-                check_path: security_login_check
-                login_path: security_login_form
-#                csrf_provider: security.csrf.token_manager
-
-                default_target_path: user_dashboard
-                always_use_default_target_path: true
+                check_path: user_login
+                login_path: user_login
             logout:
                 path: security_logout
                 target: home

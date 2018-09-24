@@ -1,0 +1,53 @@
+{% extends '@Front/base.html.twig' %}
+
+{% block title %}OuiFood - Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+            <!-- Main content -->
+            <div class="rw-column rw-content">
+
+                {% if error %}
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+
+                <div class="rw-row">
+
+                    <div class="grid-container">
+
+                        <form action="{{ path('user_login') }}" method="post">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="_password" />
+
+                            {#
+                                If you want to control the URL the user
+                                is redirected to on success (more details below)
+                                <input type="hidden" name="_target_path" value="/account" />
+                            #}
+
+                            <div class="grid desk-12 both">
+                                <input type="submit" value="Submit" class="button primary" />
+                            </div>
+                        </form>
+
+                    </div> <!-- .grid-container -->
+
+                </div> <!-- .rw-row -->
+
+            </div> <!-- .rw-content -->
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/front/js/pages/forms.js') }}"></script>
+{% endblock %}
