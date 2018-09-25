@@ -3,5 +3,5 @@ AppBundle\Entity\Ingredient:
         baseIngredient: '@base_ingredient_*'
         unit: '@unit_*'
         note: <sentence()>
-        quantity: <randomDigit()>
+        amount: <randomDigit()>
         recipes: ['@recipe_*']

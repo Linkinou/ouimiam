@@ -86,7 +86,7 @@ class RecipeCollectionController extends Controller
                     $ingredientStack[$ingredientName] = new ShoppingListIngredient(
                         $ingredientName,
                         $ingredient->getUnit()->getName(),
-                        $ingredient->getQuantity()
+                        $ingredient->getAmount()
                     );
                 }
             }

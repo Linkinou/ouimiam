@@ -10,6 +10,7 @@ use AppBundle\Entity\Unit;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,7 +28,7 @@ class IngredientFormType extends AbstractType
                     'class' => 'this-section-title-field'
                 ]
             ])
-            ->add('quantity', TextType::class, [
+            ->add('amount', NumberType::class, [
                 'attr' => [
                     'class' => 'this-section-label-field'
                 ]
