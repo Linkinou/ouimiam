@@ -44,11 +44,11 @@ class Ingredient
     private $unit;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="float")
      */
-    private $quantity;
+    private $amount;
 
     /**
      * @var ArrayCollection|Recipe[]
@@ -104,20 +104,20 @@ class Ingredient
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getQuantity(): ?string
+    public function getAmount(): ?float
     {
-        return $this->quantity;
+        return $this->amount;
     }
 
     /**
-     * @param string $quantity
+     * @param float $amount
      * @return Ingredient
      */
-    public function setQuantity(string $quantity): Ingredient
+    public function setAmount(float $amount): Ingredient
     {
-        $this->quantity = $quantity;
+        $this->amount = $amount;
 
         return $this;
     }
