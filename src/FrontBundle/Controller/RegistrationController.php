@@ -37,11 +37,13 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('home');
+            $this->addFlash('success', 'Inscription réussie ! Vous pouvez vous connecter =)');
+
+            return $this->redirectToRoute('user_login');
         }
 
         return [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ];
     }
 }

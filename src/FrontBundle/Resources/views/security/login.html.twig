@@ -9,30 +9,34 @@
             <!-- Main content -->
             <div class="rw-column rw-content">
 
-                {% if error %}
-                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+                <div class="rw-row page-title">
+                    <h1>Connexion</h1>
+                </div>
 
 
                 <div class="rw-row">
 
                     <div class="grid-container">
 
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endfor %}
+
                         <form action="{{ path('user_login') }}" method="post">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                            <div class="form-label" for="username">Email</div>
+                            <div class="grid desk-12 both">
+                                <input type="text" class="fullwidth" id="username" name="_username" value="{{ last_username }}" />
+                            </div>
 
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="_password" />
-
-                            {#
-                                If you want to control the URL the user
-                                is redirected to on success (more details below)
-                                <input type="hidden" name="_target_path" value="/account" />
-                            #}
+                            <div class="form-label" for="password">Mot de passe</div>
+                            <div class="grid desk-12 both">
+                                <input type="text" class="fullwidth" id="password" name="_password" />
+                            </div>
 
                             <div class="grid desk-12 both">
-                                <input type="submit" value="Submit" class="button primary" />
+                                <input type="submit" value="Se connecter" class="button primary" />
                             </div>
                         </form>
 
