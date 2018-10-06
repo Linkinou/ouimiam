@@ -2219,6 +2219,7 @@ label {
   margin-right: 15px;
 }
 input[type="text"],
+input[type="password"],
 input[type="date"],
 input[type="datetime"],
 input[type="datetime-local"],
@@ -2237,6 +2238,7 @@ textarea {
   box-sizing: border-box;
 }
 input[type="text"],
+input[type="password"],
 input[type="color"],
 input[type="date"],
 input[type="datetime"],

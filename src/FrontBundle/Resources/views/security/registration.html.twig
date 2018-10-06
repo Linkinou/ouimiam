@@ -9,25 +9,20 @@
             <!-- Main content -->
             <div class="rw-column rw-content">
 
-                {#<div class="rw-row page-breadcrumb">#}
-                {#<a href="#">Home</a> &raquo; <a href="#">Pages</a> &raquo; <span>Submit recipe</span>#}
-                {#</div>#}
-                {#<div class="rw-row page-title">#}
-                {#<h1>Submit recipe</h1>#}
-                {#</div>#}
+                <div class="rw-row page-title">
+                    <h1>Inscription</h1>
+                </div>
 
                 <div class="rw-row">
-
                     <div class="grid-container">
-
                         {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        <div class="grid desk-12 both">
-                            <input type="submit" value="Submit" class="button primary" />
-                        </div>
+                            {{ form_widget(form) }}
+
+                            <div class="grid desk-12 both">
+                                <input type="submit" value="S'inscrire" class="button primary" />
+                            </div>
                         {{ form_end(form) }}
                     </div> <!-- .grid-container -->
-
                 </div> <!-- .rw-row -->
 
             </div> <!-- .rw-content -->

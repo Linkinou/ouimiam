@@ -29,5 +29,8 @@ security:
                 target: home
 
     access_control:
-        - { path: ^/account/signup, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/account, roles: ROLE_USER }
+        - { path: ^/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/ingredient/submit, roles: ROLE_USER }
+        - { path: ^/recipe/submit, roles: ROLE_USER }
+        - { path: ^/recipe-collection /submit, roles: ROLE_USER }
