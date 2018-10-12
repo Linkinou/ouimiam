@@ -29,6 +29,13 @@ class RecipeCollection
     private $name;
 
     /**
+     * @var HungryUser
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\HungryUser")
+     */
+    private $user;
+
+    /**
      * @var ArrayCollection|Recipe[]
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="collections")
@@ -91,6 +98,25 @@ class RecipeCollection
     public function getRecipes()
     {
         return $this->recipes;
+    }
+
+    /**
+     * @return HungryUser
+     */
+    public function getUser(): HungryUser
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param HungryUser $user
+     * @return RecipeCollection
+     */
+    public function setUser(HungryUser $user): RecipeCollection
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
     /**
