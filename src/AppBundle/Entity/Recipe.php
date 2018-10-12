@@ -32,6 +32,13 @@ class Recipe
     private $name;
 
     /**
+     * @var HungryUser
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\HungryUser")
+     */
+    private $user;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="text")
@@ -121,6 +128,25 @@ class Recipe
     public function setName(string $name) : Recipe
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return HungryUser
+     */
+    public function getUser(): HungryUser
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param HungryUser $user
+     * @return Recipe
+     */
+    public function setUser(HungryUser $user): Recipe
+    {
+        $this->user = $user;
 
         return $this;
     }
