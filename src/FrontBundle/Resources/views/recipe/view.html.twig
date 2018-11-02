@@ -33,7 +33,7 @@
                                             <div class="mark-as-ok"><i class="fa fa-check"></i></div>
                                             <div class="ingredient"><a href="#">{{ ingredient.baseIngredient.name }}</a></div>
                                             <div class="quantity">
-                                                <div class="qt">{{ ingredient.quantity }} {{ ingredient.unit.name }}</div>
+                                                <div class="qt">{{ ingredient.amount }} {{ ingredient.unit.name }}</div>
                                                 <div class="qt-notes">{{ ingredient.note }}</div>
                                             </div>
                                         </li>
@@ -53,13 +53,13 @@
                                 <li>
                                     <div class="entry-info-author">
                                         <img src="{{ asset('bundles/front/placeholder/50-3.jpg') }}" >
-                                        <div class="author-name"><a href="#">Sandra Williams</a> <span class="mark green" title="Pro member!">Pro</span></div>
+                                        <div class="author-name"><a href="#">{{ recipe.user.username }}</a> <span class="mark green" title="Pro member!">Pro</span></div>
                                         <div><a href="#" class="follow-user button mini blue" title="851 followers">
                                                 <i class="fa fa-plus"></i> <span class="text">Follow</span>
                                             </a></div>
                                     </div>
                                 </li>
-                                <li><i class="the-icon fa fa-calendar" title="Submited on 21 Aug 2014"></i> <span>21 Aug 2014</span></li>
+                                <li><i class="the-icon fa fa-calendar" title="Submited on 21 Aug 2014"></i> <span>{{ recipe.createdAt|date }}</span></li>
                                 <li><div><i class="the-icon fa fa-book" title="Category"></i> <span><a href="#">Desserts</a></span></div></li>
                                 <li><div><i class="the-icon fa fa-tasks" title="Difficulty"></i> <span>{{ recipe.difficulty.name }}</span></div></li>
                                 <li><div><i class="the-icon fa fa-clock-o" title="Preparation time"></i> <span>{{ recipe.duration }} minutes</span></div></li>
