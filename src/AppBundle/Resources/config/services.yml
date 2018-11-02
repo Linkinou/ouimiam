@@ -7,3 +7,7 @@ services:
   FrontBundle\Controller\SecurityController:
       autowire: true
       tags: ['controller.service_arguments']
+
+  AppBundle\Resources\fixtures\orm\Processor\HungryUserProvider:
+        arguments: ["@security.password_encoder"]
+        tags: [ { name: hautelook_alice.alice.processor } ]

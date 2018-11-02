@@ -1,6 +1,3 @@
-imports:
-    - { resource: '@AppBundle/Resources/config/services.yml' }
-
 parameters:
 
 services:
@@ -23,3 +20,7 @@ services:
         resource: '../../src/AppBundle/Action'
         public: true
         tags: ['controller.service_arguments']
+
+
+imports:
+    - { resource: '@AppBundle/Resources/config/services.yml' }

@@ -49,6 +49,7 @@ class RecipeCollectionController extends Controller
             $recipeCollection = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
+            $recipeCollection->setUser($this->getUser());
             $em->persist($recipeCollection);
             $em->flush();
         }

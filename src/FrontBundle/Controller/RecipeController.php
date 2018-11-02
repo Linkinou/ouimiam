@@ -73,6 +73,7 @@ class RecipeController extends Controller
 
 
             $em = $this->getDoctrine()->getManager();
+            $recipe->setUser($this->getUser());
             $em->persist($recipe);
             $em->flush();
         }
