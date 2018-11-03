@@ -81,13 +81,13 @@ class RecipeCollectionController extends Controller
         foreach ($recipes as $recipe) {
             /** @var Ingredient $ingredient */
             foreach ($recipe->getIngredients() as $ingredient) {
-                $ingredientName = $ingredient->getBaseIngredient()->getName();
+                $ingredientName = $ingredient->getBaseIngredient()->getName() . $ingredient->getUnit()->getName();
 
                 if (array_key_exists($ingredientName, $ingredientStack)) {
                     $ingredientStack[$ingredientName]->cumulateIngredient($ingredient);
                 } else {
                     $ingredientStack[$ingredientName] = new ShoppingListIngredient(
-                        $ingredientName,
+                        $ingredient->getBaseIngredient()->getName(),
                         $ingredient->getUnit()->getName(),
                         $ingredient->getAmount()
                     );

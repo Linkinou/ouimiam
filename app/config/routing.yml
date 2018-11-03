@@ -3,6 +3,9 @@ front:
     type:     annotation
     prefix:   /
 
+security_logout:
+    path: /logout
+
 api:
     resource: '.'
     type: 'api_platform'

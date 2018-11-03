@@ -88,7 +88,7 @@ class ShoppingListIngredient
     public function cumulateIngredient(Ingredient $ingredient)
     {
         if ($ingredient->getBaseIngredient()->getName() === $this->name) {
-            $this->quantity += (int) $ingredient->getAmount();
+            $this->quantity += $ingredient->getAmount();
         }
     }
 }
