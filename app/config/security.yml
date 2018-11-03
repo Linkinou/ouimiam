@@ -33,4 +33,6 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/ingredient/submit, roles: ROLE_USER }
         - { path: ^/recipe/submit, roles: ROLE_USER }
+        - { path: ^/ingredient/submit, roles: ROLE_ADMIN }
+        - { path: ^/unit/submit, roles: ROLE_ADMIN }
         - { path: ^/recipe-collection /submit, roles: ROLE_USER }
