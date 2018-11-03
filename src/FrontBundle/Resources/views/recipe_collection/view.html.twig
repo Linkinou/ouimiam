@@ -27,7 +27,11 @@
                                     <div class="grid-container">
 
                                         <div class="entry-photo grid desk-4 alpha">
-                                            <img src="{{ asset('bundles/front/placeholder/food/240x220/11.jpg') }}" alt="" />
+                                            {% if recipe.image.name is not null %}
+                                                <img src="{{ vich_uploader_asset(recipe, 'imageFile') }}" alt="{{ recipe.image.name }}" >
+                                            {% else %}
+                                                <img src="{{ asset('bundles/front/placeholder/food/240x220/11.jpg') }}" alt="" />
+                                            {% endif %}
                                         </div>
 
                                         <div class="grid desk-8 omega">
@@ -45,7 +49,11 @@
                                                 <p>{{ recipe.description }}</p>
                                             </div>
                                             <div class="entry-info-author">
-                                                <img src="assets/placeholder/people/50x50/5.jpg" alt="" />
+                                                {% if recipe.user.image.name is not null %}
+                                                    <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipe.user.image.name }}" >
+                                                {% else %}
+                                                    <img src="{{ asset('bundles/front/placeholder/people/50x50/5.jpg') }}" alt="" />
+                                                {% endif %}
                                                 <div class="author-name"><a href="#">{{ recipe.user.username }}</a></div>
                                                 <div class="total-recipes">220 recipes</div>
                                             </div>
@@ -88,16 +96,16 @@
 
                     </div> <!-- .recipes-list -->
 
-                    <div class="recipes-pagination button-block center">
-                        <a class="button small nobg primary" href="#">&larr; Prev</a>
-                        <a class="button small nobg primary" href="#">...</a>
-                        <span class="button small nobg primary current">4</span>
-                        <a class="button small nobg primary" href="#">5</a>
-                        <a class="button small nobg primary" href="#">6</a>
-                        <a class="button small nobg primary" href="#">...</a>
-                        <a class="button small nobg primary" href="#">192</a>
-                        <a class="button small nobg primary" href="#">Next &rarr;</a>
-                    </div>
+                    {#<div class="recipes-pagination button-block center">#}
+                        {#<a class="button small nobg primary" href="#">&larr; Prev</a>#}
+                        {#<a class="button small nobg primary" href="#">...</a>#}
+                        {#<span class="button small nobg primary current">4</span>#}
+                        {#<a class="button small nobg primary" href="#">5</a>#}
+                        {#<a class="button small nobg primary" href="#">6</a>#}
+                        {#<a class="button small nobg primary" href="#">...</a>#}
+                        {#<a class="button small nobg primary" href="#">192</a>#}
+                        {#<a class="button small nobg primary" href="#">Next &rarr;</a>#}
+                    {#</div>#}
 
 
                 </div>

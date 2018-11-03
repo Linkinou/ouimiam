@@ -21,5 +21,8 @@ fix-permissions:
 	sudo chown -R linkinou:linkinou ./var/cache/* ./var/logs/* ./app/DoctrineMigrations/*
 	sudo chmod -R 777 ./var/logs/* ./var/cache/*
 
+fix-images-permission:
+	docker-compose exec app chown -R www-data web/bundles/front/images
+
 fixtures:
 	$(APP) $(CONSOLE) hautelook:fixtures:load --purge-with-truncate -vvv

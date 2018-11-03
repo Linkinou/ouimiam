@@ -44,7 +44,11 @@
                                                 <p>{{ collection.description }}</p>
                                             </div>
                                             <div class="entry-info-author">
-                                                <img src="assets/placeholder/people/50x50/5.jpg" alt="" />
+                                                {% if collection.user.image.name is not null %}
+                                                    <img src="{{ vich_uploader_asset(collection.user, 'imageFile') }}" alt="{{ collection.user.image.name }}" >
+                                                {% else %}
+                                                    <img src="{{ asset('bundles/front/placeholder/people/50x50/5.jpg') }}" alt="" />
+                                                {% endif %}
                                                 <div class="author-name"><a href="#">{{ collection.user.username }}</a></div>
                                                 <div class="total-recipes">220 recipes</div>
                                             </div>
