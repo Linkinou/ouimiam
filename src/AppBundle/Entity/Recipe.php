@@ -101,9 +101,12 @@ class Recipe
     private $collections;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * @Assert\File(
+     *     maxSize="500k",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
      *
-     * @Vich\UploadableField(mapping="recipe_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="recipe_image", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName", dimensions="image.dimensions")
      *
      * @var File
      */

@@ -52,7 +52,9 @@
                             <ul>
                                 <li>
                                     <div class="entry-info-author">
-                                        <img src="{{ asset('bundles/front/placeholder/50-3.jpg') }}" >
+
+                                        {#<img src="{{ asset('bundles/front/placeholder/50-3.jpg') }}" >#}
+                                        <img src="{{ vich_uploader_asset(recipe, 'image') }}" alt="{{ recipe.image.name }}" >
                                         <div class="author-name"><a href="#">{{ recipe.user.username }}</a> <span class="mark green" title="Pro member!">Pro</span></div>
                                         <div><a href="#" class="follow-user button mini blue" title="851 followers">
                                                 <i class="fa fa-plus"></i> <span class="text">Follow</span>

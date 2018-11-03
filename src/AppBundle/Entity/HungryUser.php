@@ -63,7 +63,7 @@ class HungryUser implements UserInterface, EquatableInterface
      *
      * @ORM\Column(type="array")
      */
-    private $roles = [];
+    private $roles = ['ROLE_USER'];
 
 
     /**
