@@ -6,11 +6,16 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ApiResource
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Recipe
 {
@@ -96,6 +101,25 @@ class Recipe
     private $collections;
 
     /**
+     * @Assert\File(
+     *     maxSize="500k",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     *
+     * @Vich\UploadableField(mapping="recipe_image", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName", dimensions="image.dimensions")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Embedded(class="Vich\UploaderBundle\Entity\File")
+     *
+     * @var EmbeddedFile
+     */
+    private $image;
+
+    /**
      * Recipe constructor.
      */
     public function __construct()
@@ -103,6 +127,7 @@ class Recipe
         $this->ingredients = new ArrayCollection();
         $this->collections = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->image = new EmbeddedFile();
     }
 
     /**
@@ -336,6 +361,53 @@ class Recipe
     public function removeCollection(RecipeCollection $collection)
     {
         $this->collections->removeElement($collection);
+
+        return $this;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|UploadedFile $image
+     */
+    public function setImageFile(?File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if (null !== $image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @return EmbeddedFile
+     */
+    public function getImage(): ?EmbeddedFile
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param EmbeddedFile $image
+     * @return Recipe
+     */
+    public function setImage(EmbeddedFile $image): Recipe
+    {
+        $this->image = $image;
 
         return $this;
     }

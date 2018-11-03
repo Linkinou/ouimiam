@@ -13,35 +13,43 @@
                     <div class="grid-container">
                         <div class="grid desk-6">
                             <div class="entry-photo">
-                                <div class="badge">Recipe of the day</div>
-                                <img src="{{ asset('bundles/front/placeholder/food/560x380/21.jpg') }}" alt="" />
+                                <div class="badge">Recette à découvrir</div>
+                                {% if recipeOfTheDay.image.name is not null %}
+                                    <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipeOfTheDay.image.name }}" >
+                                {% else %}
+                                    <img src="{{ asset('bundles/front/placeholder/food/560x380/21.jpg') }}" alt="" />
+                                {% endif %}
                             </div>
                         </div>
                         <div class="grid desk-6">
-                            <h3><a href="#">{{ recipeOfTheDay.name }}</a></h3>
+                            <h3><a href="{{ path('view_recipe', {'id': recipeOfTheDay.id}) }}">{{ recipeOfTheDay.name }}</a></h3>
                             <p>{{ recipeOfTheDay.description }}</p>
 
-                            <div class="entry-meta clearfix">
-                                <div class="meta favorites">
-                                    <span class="icon"><i class="the-icon fa fa-heart-o"></i></span>
-                                    <span class="number">89 favorites</span>
-                                </div>
-                                <div class="meta likes">
-                                    <span class="icon"><i class="the-icon fa fa-thumbs-o-up"></i></span>
-                                    <span class="number">225 likes</span>
-                                </div>
-                                <div class="meta comments">
-                                    <span class="icon"><i class="the-icon fa fa-comments"></i></span>
-                                    <span class="number">26 comments</span>
-                                </div>
-                            </div>
+                            {#<div class="entry-meta clearfix">#}
+                                {#<div class="meta favorites">#}
+                                    {#<span class="icon"><i class="the-icon fa fa-heart-o"></i></span>#}
+                                    {#<span class="number">89 favorites</span>#}
+                                {#</div>#}
+                                {#<div class="meta likes">#}
+                                    {#<span class="icon"><i class="the-icon fa fa-thumbs-o-up"></i></span>#}
+                                    {#<span class="number">225 likes</span>#}
+                                {#</div>#}
+                                {#<div class="meta comments">#}
+                                    {#<span class="icon"><i class="the-icon fa fa-comments"></i></span>#}
+                                    {#<span class="number">26 comments</span>#}
+                                {#</div>#}
+                            {#</div>#}
                             <div class="clear"></div>
 
                             <div class="entry-info-author">
-                                <img src="{{ asset('bundles/front/placeholder/people/80x80/21.jpg') }}" alt="" />
-                                <div class="submited-by">Author:</div>
-                                <div class="author-sname"><a href="#">Sandra Williams</a> <span class="mark green" title="Pro member!">Pro</span></div>
-                                <div class="total-recipes">136 recipes</div>
+                                {% if recipeOfTheDay.user.image.name is not null %}
+                                    <img src="{{ vich_uploader_asset(recipeOfTheDay.user, 'imageFile') }}" alt="{{ recipeOfTheDay.user.image.name }}" >
+                                {% else %}
+                                    <img src="{{ asset('bundles/front/placeholder/people/80x80/21.jpg') }}" alt="" />
+                                {% endif %}
+                                <div class="submited-by">Auteur:</div>
+                                <div class="author-sname"><a href="#">{{ recipeOfTheDay.user.username }}</a> <!-- <span class="mark green" title="Pro member!">Pro</span> --></div>
+                                {#<div class="total-recipes">136 recipes</div>#}
                             </div>
 
                         </div>
@@ -68,7 +76,11 @@
                                 <!-- Entry -->
                                 <div class="entry style-columns">
                                     <div class="entry-photo">
-                                        <img src="{{ asset('bundles/front/placeholder/food/350x240/18.jpg') }}" alt="" />
+                                        {% if latestRecipe.image.name is not null %}
+                                            <img src="{{ vich_uploader_asset(latestRecipe, 'imageFile') }}" alt="{{ latestRecipe.image.name }}" >
+                                        {% else %}
+                                            <img src="{{ asset('bundles/front/placeholder/food/350x240/18.jpg') }}" alt="" />
+                                        {% endif %}
                                     </div>
                                     <div class="entry-title">
                                         <a href="{{ path('view_recipe', {'id': latestRecipe.id}) }}">{{ latestRecipe.name }}</a>
@@ -79,10 +91,10 @@
                                     <div class="entry-content">
                                         <p>{{ latestRecipe.description }}</p>
                                     </div>
-                                    <div class="entry-controls">
-                                        <a href="#" class="control entry-to-favorites" title="Add to favorites"> <i class="fa fa-heart-o"></i> </a><span class="control-tip">24</span>
-                                        <a href="#" class="control entry-like" title="I like this!"> <i class="fa fa-thumbs-o-up"></i> </a> <span class="control-tip">115</span>
-                                    </div>
+                                    {#<div class="entry-controls">#}
+                                        {#<a href="#" class="control entry-to-favorites" title="Add to favorites"> <i class="fa fa-heart-o"></i> </a><span class="control-tip">24</span>#}
+                                        {#<a href="#" class="control entry-like" title="I like this!"> <i class="fa fa-thumbs-o-up"></i> </a> <span class="control-tip">115</span>#}
+                                    {#</div>#}
                                 </div> <!-- .entry -->
                             {% endfor %}
 

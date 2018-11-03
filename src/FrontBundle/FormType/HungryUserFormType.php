@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class HungryUserFormType extends AbstractType
 {
@@ -27,6 +28,10 @@ class HungryUserFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-label'
                 ]
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'label' => 'Avatar (optionnel)'
             ])
         ;
     }

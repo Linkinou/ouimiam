@@ -40,6 +40,8 @@ vendor/
 # Build data
 /build/
 
+composer.lock
+
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
 

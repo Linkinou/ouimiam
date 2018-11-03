@@ -92,3 +92,19 @@ api_platform:
         shared_max_age: 3600
         vary: ['Content-Type', 'Authorization']
         public: true
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        recipe_image:
+            uri_prefix: /bundles/front/images/recipe
+            upload_destination: '%kernel.project_dir%/web/bundles/front/images/recipe'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        collection_image:
+            uri_prefix: /bundles/front/images/collection
+            upload_destination: '%kernel.project_dir%/web/bundles/front/images/collection'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+        user_image:
+            uri_prefix: /bundles/front/images/user
+            upload_destination: '%kernel.project_dir%/web/bundles/front/images/user'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer

@@ -17,8 +17,10 @@ Header
                         <li><a href="{{ path('home') }}">Home</a></li>
                         <li><a href="{{ path('recipe_collection_index') }}">Collections</a></li>
                         <li><a href="{{ path('recipe_index') }}">Recettes</a></li>
-                        <li><a href="{{ path('user_registration') }}">Inscription</a></li>
-                        <li><a href="{{ path('user_login') }}">Connexion</a></li>
+                        {% if not app.user %}
+                            <li><a href="{{ path('user_registration') }}">Inscription</a></li>
+                            <li><a href="{{ path('user_login') }}">Connexion</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -150,24 +152,30 @@ Header
                         </li>
 
                         <!-- User menu -->
-                        {#<li class="to-left-more">#}
-                            {#<div class="user-details-in-menu">#}
-                                {#<a href="profile.html" class="avatar"><img src="{{ asset('bundles/front/placeholder/people/50x50/2.jpg') }}" alt="" /></a>#}
-                            {#</div>#}
-                            {#<ul class="sub-menu">#}
-                                {#<li><a href="profile.html">Public Profile</a></li>#}
-                                {#<li class="separator"><a href="profile-requests.html">Requests</a></li>#}
-                                {#<li><a href="profile-collections.html">Collections</a></li>#}
-                                {#<li><a href="profile-favorites.html">Favorites</a></li>#}
-                                {#<li class="separator"><a href="profile-likes.html">Likes</a></li>#}
-                                {#<li><a href="profile-reputation.html">Reputation</a></li>#}
-                                {#<li class="separator"><a href="profile-followers.html">Followers</a></li>#}
-                                {#<li><a href="profile-notifications.html">Notifications</a></li>#}
-                                {#<li><a href="profile-private-messages.html">Private Messages</a></li>#}
-                                {#<li class="separator"><a href="#">Settings</a></li>#}
-                                {#<li><a href="#">Sign Out</a></li>#}
-                            {#</ul>#}
-                        {#</li>#}
+                        {% if app.user %}
+                            <li class="to-left-more">
+                                <div class="user-details-in-menu">
+                                    {% if app.user.image.name %}
+                                        <a href="#" class="avatar"><img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.image.name }}" /></a>
+                                    {% else %}
+                                        <a href="#" class="avatar"><img src="{{ asset('bundles/front/placeholder/people/50x50/2.jpg') }}" alt="" /></a>
+                                    {% endif %}
+                                </div>
+                                {#<ul class="sub-menu">#}
+                                    {#<li><a href="profile.html">Public Profile</a></li>#}
+                                    {#<li class="separator"><a href="profile-requests.html">Requests</a></li>#}
+                                    {#<li><a href="profile-collections.html">Collections</a></li>#}
+                                    {#<li><a href="profile-favorites.html">Favorites</a></li>#}
+                                    {#<li class="separator"><a href="profile-likes.html">Likes</a></li>#}
+                                    {#<li><a href="profile-reputation.html">Reputation</a></li>#}
+                                    {#<li class="separator"><a href="profile-followers.html">Followers</a></li>#}
+                                    {#<li><a href="profile-notifications.html">Notifications</a></li>#}
+                                    {#<li><a href="profile-private-messages.html">Private Messages</a></li>#}
+                                    {#<li class="separator"><a href="#">Settings</a></li>#}
+                                    {#<li><a href="#">Sign Out</a></li>#}
+                                {#</ul>#}
+                            </li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>

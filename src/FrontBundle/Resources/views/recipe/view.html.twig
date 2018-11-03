@@ -20,7 +20,11 @@
             <div class="rw-row">
                 <div class="entry style-columns">
                     <div class="entry-photo single-recipe-photo-cover">
-                        <img src="{{ asset('bundles/front/placeholder/1.jpg') }}" alt="">
+                        {% if recipe.image.name is not null %}
+                            <img src="{{ vich_uploader_asset(recipe, 'imageFile') }}" alt="{{ recipe.image.name }}" >
+                        {% else %}
+                            <img src="{{ asset('bundles/front/placeholder/1.jpg') }}" alt="" />
+                        {% endif %}
                     </div>
                     <div class="entry-content clearfix">
 
@@ -52,17 +56,22 @@
                             <ul>
                                 <li>
                                     <div class="entry-info-author">
-                                        <img src="{{ asset('bundles/front/placeholder/50-3.jpg') }}" >
-                                        <div class="author-name"><a href="#">{{ recipe.user.username }}</a> <span class="mark green" title="Pro member!">Pro</span></div>
-                                        <div><a href="#" class="follow-user button mini blue" title="851 followers">
-                                                <i class="fa fa-plus"></i> <span class="text">Follow</span>
-                                            </a></div>
+
+                                        {% if recipe.user.image.name is not null %}
+                                            <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipe.user.image.name }}" >
+                                        {% else %}
+                                            <img src="{{ asset('bundles/front/placeholder/people/50x50/5.jpg') }}" alt="" />
+                                        {% endif %}
+                                        <div class="author-name"><a href="#">{{ recipe.user.username }}</a> </div>
+                                        {#<div><a href="#" class="follow-user button mini blue" title="851 followers">#}
+                                                {#<i class="fa fa-plus"></i> <span class="text">Follow</span>#}
+                                            {#</a></div>#}
                                     </div>
                                 </li>
-                                <li><i class="the-icon fa fa-calendar" title="Submited on 21 Aug 2014"></i> <span>{{ recipe.createdAt|date }}</span></li>
-                                <li><div><i class="the-icon fa fa-book" title="Category"></i> <span><a href="#">Desserts</a></span></div></li>
-                                <li><div><i class="the-icon fa fa-tasks" title="Difficulty"></i> <span>{{ recipe.difficulty.name }}</span></div></li>
-                                <li><div><i class="the-icon fa fa-clock-o" title="Preparation time"></i> <span>{{ recipe.duration }} minutes</span></div></li>
+                                <li><i class="the-icon fa fa-calendar" title="Date de soumission"></i> <span>{{ recipe.createdAt|date }}</span></li>
+                                <li><div><i class="the-icon fa fa-book" title="Categorie"></i> <span><a href="#">Desserts</a></span></div></li>
+                                <li><div><i class="the-icon fa fa-tasks" title="Difficulté"></i> <span>{{ recipe.difficulty.name }}</span></div></li>
+                                <li><div><i class="the-icon fa fa-clock-o" title="Temps de préparation"></i> <span>{{ recipe.duration }} minutes</span></div></li>
                             </ul>
                         </div>
 
@@ -76,15 +85,15 @@
             </div> <!-- .rw-row -->
 
             <div class="rw-row light border-tb">
-                <div class="recipe-tags">
-                    <span class="tags-title">Tags:</span>
-                    <span class="tag"><a href="#">Chicken</a></span>
-                    <span class="tag"><a href="#">Chicken Roast</a></span>
-                    <span class="tag"><a href="#">Gluten-Free</a></span>
-                    <span class="tag"><a href="#">Low Carb</a></span>
-                    <span class="tag"><a href="#">Main Course</a></span>
-                    <span class="tag"><a href="#">Smoked Paprika</a></span>
-                </div>
+                {#<div class="recipe-tags">#}
+                    {#<span class="tags-title">Tags:</span>#}
+                    {#<span class="tag"><a href="#">Chicken</a></span>#}
+                    {#<span class="tag"><a href="#">Chicken Roast</a></span>#}
+                    {#<span class="tag"><a href="#">Gluten-Free</a></span>#}
+                    {#<span class="tag"><a href="#">Low Carb</a></span>#}
+                    {#<span class="tag"><a href="#">Main Course</a></span>#}
+                    {#<span class="tag"><a href="#">Smoked Paprika</a></span>#}
+                {#</div>#}
             </div> <!-- .rw-row -->
 
         </div> <!-- .rw-content -->
