@@ -20,6 +20,8 @@
 
                     <div class="grid-container">
 
+                        {{ include('@Front/_common/form/flash_message.html.twig') }}
+
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
                         <div class="grid desk-12 both">

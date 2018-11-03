@@ -52,6 +52,8 @@ class RecipeCollectionController extends Controller
             $recipeCollection->setUser($this->getUser());
             $em->persist($recipeCollection);
             $em->flush();
+
+            $this->addFlash('success', 'Collection ajoutée !');
         }
 
         return [

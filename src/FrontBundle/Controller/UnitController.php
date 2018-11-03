@@ -6,36 +6,38 @@ use AppBundle\Entity\BaseIngredient;
 use AppBundle\Entity\Recipe;
 use FrontBundle\FormType\BaseIngredientFormType;
 use FrontBundle\FormType\RecipeFormType;
+use FrontBundle\FormType\UnitFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class IngredientController extends Controller
+class UnitController extends Controller
 {
     /**
      * @param Request $request
      *
-     * @Route("/ingredient/submit", name="submit_ingredient")
+     * @Route("/unit/submit", name="submit_unit")
      *
-     * @Template("@Front/ingredient/submit.html.twig")
+     * @Template("@Front/unit/submit.html.twig")
      * @return array
      */
-    public function submitIngredientAction(Request $request)
+    public function submitUnitAction(Request $request)
     {
-        $form = $this->createForm(BaseIngredientFormType::class);
+        $form = $this->createForm(UnitFormType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $ingredient = $form->getData();
+            $unit = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($ingredient);
+            $em->persist($unit);
             $em->flush();
 
-            $this->addFlash('success', 'Ingrédient ajouté');
+            $this->addFlash('success', 'Unité ajoutée');
+
         }
 
         return [

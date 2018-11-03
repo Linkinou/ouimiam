@@ -48,6 +48,9 @@ class RecipeController extends Controller
             $newRecipe->setUser($this->getUser());
             $em->persist($newRecipe);
             $em->flush();
+
+            $this->addFlash('success', 'Recette ajoutée !');
+
         }
 
         return [
@@ -77,6 +80,8 @@ class RecipeController extends Controller
             $recipe->setUser($this->getUser());
             $em->persist($recipe);
             $em->flush();
+
+            $this->addFlash('success', 'Recette éditée !');
         }
 
         return [
