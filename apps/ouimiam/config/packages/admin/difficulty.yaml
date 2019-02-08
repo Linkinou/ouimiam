@@ -1,0 +1,16 @@
+easy_admin:
+    entities:
+        Difficulty:
+            class: App\Entity\Difficulty
+            list:
+                fields:
+                    - id
+                    - name
+            show:
+                fields:
+                    - id
+                    - name
+            form:
+                fields:
+                    - id
+                    - name

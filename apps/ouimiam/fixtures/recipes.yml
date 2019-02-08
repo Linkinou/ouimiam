@@ -1,0 +1,9 @@
+App\Entity\Recipe:
+    recipe_{0..10}:
+        name: <sentence()>
+        user: '@hungry_user_*'
+        description: <sentence(8, true)>
+        preparation: <paragraph(100)>
+        cookingSteps: <paragraph(50)>
+        duration: <numberBetween()>
+        difficulty: '@difficulty_*'

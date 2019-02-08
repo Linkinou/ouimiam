@@ -1,0 +1,25 @@
+easy_admin:
+    entities:
+        Recipe:
+            class: App\Entity\Recipe
+            list:
+                fields:
+                    - id
+                    - { property: 'image', type: 'image', base_path: '%app.path.recipe_images%' }
+                    - name
+                    - user
+                    - description
+                    - duration
+                    - difficulty
+                    - ingredients
+                    - collections
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - name
+                    - user
+                    - description
+                    - duration
+                    - difficulty
+                    - ingredients
+                    - collections

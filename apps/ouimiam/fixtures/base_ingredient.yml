@@ -1,0 +1,31 @@
+App\Entity\BaseIngredient:
+    base_ingredient_1:
+        name: 'Tomate'
+    base_ingredient_2:
+        name: 'Pomme de terre'
+    base_ingredient_3:
+        name: 'Sel'
+    base_ingredient_4:
+        name: 'riz'
+    base_ingredient_5:
+        name: 'Tofu fumé'
+    base_ingredient_6:
+        name: 'Carotte'
+    base_ingredient_7:
+        name: 'Aubergine'
+    base_ingredient_8:
+        name: 'Concombre'
+    base_ingredient_9:
+        name: 'Courgette'
+    base_ingredient_10:
+        name: 'Ail'
+    base_ingredient_11:
+        name: 'Oignon'
+    base_ingredient_12:
+        name: 'Sauce soja'
+    base_ingredient_13:
+        name: 'Champignon'
+    base_ingredient_14:
+        name: 'Choux rouge'
+    base_ingredient_15:
+        name: 'Cumin'

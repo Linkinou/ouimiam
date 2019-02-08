@@ -1,0 +1,4 @@
+parameters:
+    app.path.recipe_images: /build/images/recipe
+    app.path.collection_images: /build/images/collection
+    app.path.user_images: /build/images/user

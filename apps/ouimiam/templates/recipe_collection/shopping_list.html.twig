@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OuiFood - Recette{% endblock %}
+
+{% block body %}
+
+<div class="rw-container rw-section">
+    <div class="rw-inner clearfix">
+
+        <!-- Main content -->
+        <div class="rw-column rw-content">
+
+            <div class="rw-row page-breadcrumb">
+                <a href="{{ path('home') }}">Home</a> &raquo; <a href="#">Liste de course</a> &raquo; <span>{{ collection.name }}</span>
+            </div>
+            <div class="rw-row page-title">
+                <h1>{{ collection.name }} - Liste de course</h1>
+            </div>
+
+            <div class="rw-row">
+                <div class="entry style-columns">
+                    <div class="entry-photo single-recipe-photo-cover">
+                        <img src="build/placeholder/1.jpg" alt="">
+                    </div>
+                    <div class="entry-content clearfix">
+
+                        <div class="recipe-content">
+                            <div class="single-recipe-ingredients">
+                                <h3 class="recipe-headlines ingredients first">Ingredients:</h3>
+                                <ul>
+                                    {% for ingredient in ingredients %}
+                                        <li>
+                                            <div class="mark-as-ok"><i class="fa fa-check"></i></div>
+                                            <div class="ingredient"><a href="#">{{ ingredient.name }}</a></div>
+                                            <div class="quantity">
+                                                <div class="qt">{{ ingredient.quantity }} {{ ingredient.unit }}</div>
+                                                {#<div class="qt-notes">{{ ingredient.note }}</div>#}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div> <!-- .entry-content -->
+                    <div class="clear"></div>
+
+                </div> <!-- .entry -->
+                <div class="clear"></div>
+
+
+            </div> <!-- .rw-row -->
+
+            <div class="rw-row light border-tb">
+                <div class="recipe-tags">
+                    <span class="tags-title">Tags:</span>
+                    <span class="tag"><a href="#">Chicken</a></span>
+                    <span class="tag"><a href="#">Chicken Roast</a></span>
+                    <span class="tag"><a href="#">Gluten-Free</a></span>
+                    <span class="tag"><a href="#">Low Carb</a></span>
+                    <span class="tag"><a href="#">Main Course</a></span>
+                    <span class="tag"><a href="#">Smoked Paprika</a></span>
+                </div>
+            </div> <!-- .rw-row -->
+
+        </div> <!-- .rw-content -->
+
+    </div> <!-- .rw-inner -->
+</div> <!-- .rw-container -->
+{% endblock %}

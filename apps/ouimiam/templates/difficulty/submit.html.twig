@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OuiFood - Recette{% endblock %}
+
+{% block body %}
+
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+            <!-- Main content -->
+            <div class="rw-column rw-content">
+
+                <div class="rw-row page-breadcrumb">
+                    <a href="#">Home</a> &raquo; <a href="#">Pages</a> &raquo; <span>Ajouter une difficulté</span>
+                </div>
+                <div class="rw-row page-title">
+                    <h1>Ajouter une difficulté</h1>
+                </div>
+
+                <div class="rw-row">
+
+                    <div class="grid-container">
+
+                        {{ include('_common/form/flash_message.html.twig') }}
+
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <div class="grid desk-12 both">
+                            <input type="submit" value="Submit" class="button primary" />
+                        </div>
+                        {{ form_end(form) }}
+                    </div> <!-- .grid-container -->
+
+                </div> <!-- .rw-row -->
+
+            </div> <!-- .rw-content -->
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('forms') }}
+    <script src="build/forms.js"></script>
+{% endblock %}
