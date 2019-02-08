@@ -26,7 +26,7 @@
                                     <div class="grid-container">
 
                                         <div class="entry-photo grid desk-4 alpha">
-                                            <img src="build/placeholder/food/240x220/11.jpg" alt="" />
+                                            <img src="{{ asset('build/placeholder/food/240x220/11.jpg') }}" alt="" />
                                         </div>
 
                                         <div class="grid desk-8 omega">
@@ -47,7 +47,7 @@
                                                 {% if collection.user.image is not null %}
                                                     <img src="{{ vich_uploader_asset(collection.user, 'imageFile') }}" alt="{{ collection.user.image }}" >
                                                 {% else %}
-                                                    <img src="build/placeholder/people/50x50/5.jpg" alt="" />
+                                                    <img src="{{ asset('build/placeholder/people/50x50/5.jpg') }}" alt="" />
                                                 {% endif %}
                                                 <div class="author-name"><a href="#">{{ collection.user.username }}</a></div>
                                                 <div class="total-recipes">220 recipes</div>

@@ -23,7 +23,7 @@
                         {% if recipe.image is not null %}
                             <img src="{{ vich_uploader_asset(recipe, 'imageFile') }}" alt="{{ recipe.image }}" >
                         {% else %}
-                            <img src="build/placeholder/1.jpg" alt="" />
+                            <img src="{{ asset('build/placeholder/food/240x220/11.jpg') }}" alt="" />
                         {% endif %}
                     </div>
                     <div class="entry-content clearfix">
@@ -60,7 +60,7 @@
                                         {% if recipe.user.image is not null %}
                                             <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipe.user.image }}" >
                                         {% else %}
-                                            <img src="build/placeholder/people/50x50/5.jpg" alt="" />
+                                            <img src="{{ asset('build/placeholder/people/50x50/5.jpg') }}" alt="" />
                                         {% endif %}
                                         <div class="author-name"><a href="#">{{ recipe.user.username }}</a> </div>
                                         {#<div><a href="#" class="follow-user button mini blue" title="851 followers">#}

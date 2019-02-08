@@ -18,7 +18,7 @@
                                     {% if recipeOfTheDay.image is not null %}
                                         <img src="{{ vich_uploader_asset(recipeOfTheDay, 'imageFile') }}" alt="{{ recipeOfTheDay.image }}" >
                                     {% else %}
-                                        <img src="build/placeholder/food/560x380/21.jpg" alt="" />
+                                        <img src="{{ asset('build/placeholder/food/560x380/21.jpg') }}" alt="" />
                                     {% endif %}
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                                     {% if recipeOfTheDay.user.image is not null %}
                                         <img width="80px" height="80px" src="{{ vich_uploader_asset(recipeOfTheDay.user, 'imageFile') }}" alt="{{ recipeOfTheDay.user.image }}" >
                                     {% else %}
-                                        <img src="build/placeholder/people/80x80/21.jpg" alt="" />
+                                        <img src="{{ asset('build/placeholder/people/80x80/21.jpg') }}" alt="" />
                                     {% endif %}
                                     <div class="submited-by">Auteur:</div>
                                     <div class="author-sname"><a href="#">{{ recipeOfTheDay.user.username }}</a> <!-- <span class="mark green" title="Pro member!">Pro</span> --></div>
@@ -81,7 +81,7 @@
                                         {% if latestRecipe.image is not null %}
                                             <img src="{{ vich_uploader_asset(latestRecipe, 'imageFile') }}" alt="{{ latestRecipe.image }}" >
                                         {% else %}
-                                            <img src="build/placeholder/food/350x240/18.jpg" alt="" />
+                                            <img src="{{ asset('build/placeholder/food/350x240/18.jpg') }}" alt="" />
                                         {% endif %}
                                     </div>
                                     <div class="entry-title">

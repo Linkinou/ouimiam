@@ -162,7 +162,7 @@ Header
                                     {% if app.user.image %}
                                         <a href="#" class="avatar"><img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.image }}" /></a>
                                     {% else %}
-                                        <a href="#" class="avatar"><img src="build/placeholder/people/50x50/2.jpg" alt="" /></a>
+                                        <a href="#" class="avatar"><img src="{{ asset('build/placeholder/people/50x50/2.jpg') }}" alt="" /></a>
                                     {% endif %}
                                 </div>
                                 <ul class="sub-menu">
