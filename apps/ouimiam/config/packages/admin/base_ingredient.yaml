@@ -1,0 +1,12 @@
+easy_admin:
+    entities:
+        BaseIngredient:
+            class: App\Entity\BaseIngredient
+            list:
+                fields:
+                    - id
+                    - name
+            form:
+                fields:
+                    - id
+                    - name

@@ -1,0 +1,11 @@
+easy_admin:
+    design:
+        brand_color: '#1ABC9C'
+imports:
+    - { resource: ./admin/recipe.yaml }
+    - { resource: ./admin/difficulty.yaml }
+    - { resource: ./admin/hungry_user.yaml }
+    - { resource: ./admin/recipe_collection.yaml }
+    - { resource: ./admin/base_ingredient.yaml }
+    - { resource: ./admin/ingredient.yaml }
+    - { resource: ./admin/unit.yaml }

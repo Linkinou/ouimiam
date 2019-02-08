@@ -1,0 +1,17 @@
+easy_admin:
+    entities:
+        Ingredient:
+            class: App\Entity\Ingredient
+            list:
+                fields:
+                    - id
+                    - baseIngredient.name
+                    - unit
+                    - amount
+                    - note
+            form:
+                fields:
+                    - { property: 'baseIngredient', type: 'easyadmin_autocomplete' }
+                    - { property: 'unit', type: 'easyadmin_autocomplete' }
+                    - amount
+                    - note

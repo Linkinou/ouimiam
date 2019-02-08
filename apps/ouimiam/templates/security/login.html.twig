@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OuiFood - Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+            <!-- Main content -->
+            <div class="rw-column rw-content">
+
+                <div class="rw-row page-title">
+                    <h1>Connexion</h1>
+                </div>
+
+
+                <div class="rw-row">
+
+                    <div class="grid-container">
+
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endfor %}
+
+                        <form action="{{ path('user_login') }}" method="post">
+                            <div class="form-label" for="username">Email</div>
+                            <div class="grid desk-12 both">
+                                <input type="text" class="fullwidth" id="username" name="_username" value="{{ last_username }}" />
+                            </div>
+
+                            <div class="form-label" for="password">Mot de passe</div>
+                            <div class="grid desk-12 both">
+                                <input type="password" class="fullwidth" id="password" name="_password" />
+                            </div>
+
+                            <div class="grid desk-12 both">
+                                <input type="submit" value="Se connecter" class="button primary" />
+                            </div>
+                        </form>
+
+                    </div> <!-- .grid-container -->
+
+                </div> <!-- .rw-row -->
+
+            </div> <!-- .rw-content -->
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('forms') }}
+    <script src="build/forms.js"></script>
+{% endblock %}
