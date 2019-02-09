@@ -55,7 +55,6 @@
                                                     <img src="{{ asset('build/placeholder/people/50x50/5.jpg') }}" alt="" />
                                                 {% endif %}
                                                 <div class="author-name"><a href="#">{{ recipe.user.username }}</a></div>
-                                                <div class="total-recipes">220 recipes</div>
                                             </div>
                                             <div class="clear"></div>
                                         </div>
@@ -66,25 +65,10 @@
                                 <div class="recipe-info-pointer"><i class="the-icon fa fa-angle-double-left"></i></div>
 
                                 <div class="recipe-info clearfix">
-                                    <div class="info preparation">
-                                        <i class="the-icon fa fa-clock-o"></i>
-                                        <span class="type">Preparation</span>
-                                        <span class="value">{{ recipe.duration }} minutes</span>
-                                    </div>
                                     <div class="info ingredients">
                                         <i class="the-icon fa fa-flask"></i>
                                         <span class="type">Contains</span>
                                         <span class="value">{{ recipe.ingredients|length }} ingredients</span>
-                                    </div>
-                                    <div class="info category">
-                                        <i class="the-icon fa fa-book"></i>
-                                        <span class="type">Category</span>
-                                        <span class="value">Desserts</span>
-                                    </div>
-                                    <div class="info difficulty moderate">
-                                        <i class="the-icon fa fa-tasks"></i>
-                                        <span class="type">Difficulty</span>
-                                        <span class="value">{{ recipe.difficulty.name }}</span>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -95,18 +79,6 @@
                         {% endfor %}
 
                     </div> <!-- .recipes-list -->
-
-                    {#<div class="recipes-pagination button-block center">#}
-                        {#<a class="button small nobg primary" href="#">&larr; Prev</a>#}
-                        {#<a class="button small nobg primary" href="#">...</a>#}
-                        {#<span class="button small nobg primary current">4</span>#}
-                        {#<a class="button small nobg primary" href="#">5</a>#}
-                        {#<a class="button small nobg primary" href="#">6</a>#}
-                        {#<a class="button small nobg primary" href="#">...</a>#}
-                        {#<a class="button small nobg primary" href="#">192</a>#}
-                        {#<a class="button small nobg primary" href="#">Next &rarr;</a>#}
-                    {#</div>#}
-
 
                 </div>
 

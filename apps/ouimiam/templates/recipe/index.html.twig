@@ -9,10 +9,10 @@
             <div class="rw-column rw-content">
 
                 <div class="rw-row page-breadcrumb">
-                    <a href="#">Home</a> &raquo; <span>Recettes de recettes</span>
+                    <a href="#">Home</a> &raquo; <span>Recettes</span>
                 </div>
                 <div class="rw-row page-title">
-                    <h1>Recettes de recettes</h1>
+                    <h1>Recettes</h1>
                 </div>
 
                 <div class="rw-row">
@@ -39,22 +39,22 @@
                                             </div>
                                             <div class="entry-controls minimal">
                                                 <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">{{ recipe.createdAt|date }}</span>
-                                                <a href="#" class="control entry-to-favorites" title="Add to favorites"> <i class="fa fa-heart-o"></i> </a><span class="control-tip">44</span>
-                                                <a href="#" class="control entry-like" title="I like this!"> <i class="fa fa-thumbs-o-up"></i> </a> <span class="control-tip">294</span>
-                                                <a href="#" class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </a> <span class="control-tip">2 comments</span>
-                                                <div class="control"> <i class="fa fa-bar-chart"></i> </div> <span class="control-tip">1810 views</span>
+                                                {#<a href="#" class="control entry-to-favorites" title="Add to favorites"> <i class="fa fa-heart-o"></i> </a><span class="control-tip">44</span>#}
+                                                {#<a href="#" class="control entry-like" title="I like this!"> <i class="fa fa-thumbs-o-up"></i> </a> <span class="control-tip">294</span>#}
+                                                {#<a href="#" class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </a> <span class="control-tip">2 comments</span>#}
+                                                {#<div class="control"> <i class="fa fa-bar-chart"></i> </div> <span class="control-tip">1810 views</span>#}
                                             </div>
                                             <div class="entry-content">
                                                 <p>{{ recipe.description }}</p>
                                             </div>
                                             <div class="entry-info-author">
-                                                {% if recipe.user.image is not null %}
-                                                    <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipe.user.image }}" >
+                                                {% if recipe.user.avatar.image is not null %}
+                                                    <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipe.user.avatar.image }}" >
                                                 {% else %}
                                                     <img src="{{ asset('build/placeholder/food/240x220/11.jpg') }}" alt="" />
                                                 {% endif %}
                                                 <div class="author-name"><a href="#">{{ recipe.user.username }}</a></div>
-                                                <div class="total-recipes">220 recipes</div>
+                                                {#<div class="total-recipes">220 recipes</div>#}
                                             </div>
                                             <div class="clear"></div>
                                         </div>
@@ -65,25 +65,10 @@
                                 <div class="recipe-info-pointer"><i class="the-icon fa fa-angle-double-left"></i></div>
 
                                 <div class="recipe-info clearfix">
-                                    <div class="info preparation">
-                                        <i class="the-icon fa fa-clock-o"></i>
-                                        <span class="type">Preparation</span>
-                                        <span class="value">{{ recipe.duration }}</span>
-                                    </div>
                                     <div class="info ingredients">
                                         <i class="the-icon fa fa-flask"></i>
-                                        <span class="type">Contains</span>
+                                        <span class="type">Contient</span>
                                         <span class="value">{{ recipe.ingredients|length }} ingredients</span>
-                                    </div>
-                                    <div class="info category">
-                                        <i class="the-icon fa fa-book"></i>
-                                        <span class="type">Category</span>
-                                        <span class="value">Desserts</span>
-                                    </div>
-                                    <div class="info difficulty moderate">
-                                        <i class="the-icon fa fa-tasks"></i>
-                                        <span class="type">Difficulty</span>
-                                        <span class="value">{{ recipe.difficulty.name }}</span>
                                     </div>
                                     <div class="clear"></div>
                                 </div>

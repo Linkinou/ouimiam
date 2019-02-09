@@ -101,7 +101,7 @@ class RecipeCollection
     /**
      * @return HungryUser
      */
-    public function getUser(): HungryUser
+    public function getUser(): ?HungryUser
     {
         return $this->user;
     }
@@ -134,10 +134,8 @@ class RecipeCollection
      */
     public function addRecipe(Recipe $recipe)
     {
-        if (!$this->recipes->contains($recipe)) {
-            $this->recipes->add($recipe);
-            $recipe->addCollection($this);
-        }
+        $recipe->addCollection($this);
+        $this->recipes->add($recipe);
 
         return $this;
     }

@@ -5,13 +5,13 @@ easy_admin:
             list:
                 fields:
                     - id
-                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%' }
                     - username
                     - email
             form:
                 fields:
                     - id
-                    - { property: 'imageFile', type: 'vich_image' }
                     - username
                     - email
                     - password
+                    - roles
+                    - avatar

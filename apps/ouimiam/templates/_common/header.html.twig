@@ -14,7 +14,7 @@ Header
                 </div>
                 <nav id="the-main-menu" class="main-menu-nav menu-inline" data-breakpoint="1160">
                     <ul class="menu horizontal">
-                        <li><a href="{{ path('home') }}">Home</a></li>
+                        <li><a href="{{ path('home') }}">Accueil</a></li>
                         <li><a href="{{ path('recipe_collection_index') }}">Collections</a></li>
                         <li><a href="{{ path('recipe_index') }}">Recettes</a></li>
                         {% if not app.user %}
@@ -32,15 +32,18 @@ Header
                         {% if app.user %}
                             <li class="to-left-more">
                                 <div class="user-details-in-menu">
-                                    {% if app.user.image %}
-                                        <a href="#" class="avatar"><img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="{{ app.user.image }}" /></a>
+                                    {% if app.user.avatar.image %}
+                                        <a href="#" class="avatar"><img src="{{ vich_uploader_asset(app.user.avatar, 'imageFile') }}" alt="{{ app.user.avatar.image }}" /></a>
                                     {% else %}
                                         <a href="#" class="avatar"><img src="{{ asset('build/placeholder/people/50x50/2.jpg') }}" alt="" /></a>
                                     {% endif %}
                                 </div>
                                 <ul class="sub-menu">
                                     {% if app.user %}
-                                        <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                                        {% if is_granted('ROLE_ADMIN', app.user) %}
+                                            <li><a href="{{ path('easyadmin') }}">Admin</a></li>
+                                        {% endif %}
+                                        <li><a href="{{ path('security_logout') }}">Déconnexion</a></li>
                                     {% endif %}
                                 </ul>
                             </li>

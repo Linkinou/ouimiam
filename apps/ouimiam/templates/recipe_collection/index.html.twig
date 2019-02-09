@@ -44,8 +44,8 @@
                                                 <p>{{ collection.description }}</p>
                                             </div>
                                             <div class="entry-info-author">
-                                                {% if collection.user.image is not null %}
-                                                    <img src="{{ vich_uploader_asset(collection.user, 'imageFile') }}" alt="{{ collection.user.image }}" >
+                                                {% if collection.user.avatar.image is not null %}
+                                                    <img src="{{ vich_uploader_asset(collection.user, 'imageFile') }}" alt="{{ collection.user.avatar.image }}" >
                                                 {% else %}
                                                     <img src="{{ asset('build/placeholder/people/50x50/5.jpg') }}" alt="" />
                                                 {% endif %}

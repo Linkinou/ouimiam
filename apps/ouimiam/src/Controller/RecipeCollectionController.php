@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Ingredient;
+use App\Entity\BaseIngredient;
 use App\Entity\Recipe;
 use App\Entity\RecipeCollection;
 use App\FormType\RecipeCollectionFormType;
-use App\FormType\RecipeFormType;
 use App\Model\ShoppingListIngredient;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,18 +77,14 @@ class RecipeCollectionController extends Controller
         $ingredientStack = [];
         /** @var Recipe $recipe */
         foreach ($recipes as $recipe) {
-            /** @var Ingredient $ingredient */
+            /** @var BaseIngredient $ingredient */
             foreach ($recipe->getIngredients() as $ingredient) {
-                $ingredientName = $ingredient->getBaseIngredient()->getName() . $ingredient->getUnit()->getName();
+                $ingredientName = $ingredient->getName();
 
                 if (array_key_exists($ingredientName, $ingredientStack)) {
-                    $ingredientStack[$ingredientName]->cumulateIngredient($ingredient);
+                    $ingredientStack[$ingredientName]->cumulateIngredient();
                 } else {
-                    $ingredientStack[$ingredientName] = new ShoppingListIngredient(
-                        $ingredient->getBaseIngredient()->getName(),
-                        $ingredient->getUnit()->getName(),
-                        $ingredient->getAmount()
-                    );
+                    $ingredientStack[$ingredientName] = new ShoppingListIngredient($ingredient->getName());
                 }
             }
         }
