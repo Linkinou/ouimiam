@@ -1,5 +1,5 @@
 APP = docker-compose exec php
-YARN = docker-compose run --rm yarn
+YARN = docker-compose run --rm yarn yarn
 CONSOLE = bin/console
 COMPOSER = composer
 
@@ -10,10 +10,10 @@ install:
 	$(APP) $(COMPOSER) install
 
 yarn-install:
-	$(YARN) yarn install
+	$(YARN) install
 
 yarn-add:
-	$(YARN) yarn add $(lib)
+	$(YARN) add $(lib)
 
 encore:
 	$(APP) ./node_modules/.bin/encore dev
