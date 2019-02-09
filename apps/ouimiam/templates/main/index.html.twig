@@ -30,7 +30,7 @@
 
                                 <div class="entry-info-author">
                                     {% if recipeOfTheDay.user.avatar.image is not null %}
-                                        <img width="80px" height="80px" src="{{ vich_uploader_asset(recipeOfTheDay.user, 'imageFile') }}" alt="{{ recipeOfTheDay.user.avatar.image }}" >
+                                        <img width="80px" height="80px" src="{{ vich_uploader_asset(recipeOfTheDay.user.avatar, 'imageFile') }}" alt="{{ recipeOfTheDay.user.avatar.image }}" >
                                     {% else %}
                                         <img src="{{ asset('build/placeholder/people/80x80/21.jpg') }}" alt="" />
                                     {% endif %}

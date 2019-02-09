@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="entry-info-author">
                                                 {% if recipe.user.avatar.image is not null %}
-                                                    <img src="{{ vich_uploader_asset(recipe.user, 'imageFile') }}" alt="{{ recipe.user.avatar.image }}" >
+                                                    <img src="{{ vich_uploader_asset(recipe.user.avatar, 'imageFile') }}" alt="{{ recipe.user.avatar.image }}" >
                                                 {% else %}
                                                     <img src="{{ asset('build/placeholder/food/240x220/11.jpg') }}" alt="" />
                                                 {% endif %}
