@@ -15,7 +15,7 @@
 
     {% block stylesheets %}
         {{ encore_entry_script_tags('app') }}
-        <link rel="stylesheet" href="{{ asset('/build/app.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}" type="text/css"/>
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -36,15 +36,15 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
-    <script src="{{ asset('/build/app.js') }}"></script>
-    <script src="{{ asset('/build/min/jquery.qtip.min.js') }}"></script>
-    <script src="{{ asset('/build/min/html5shiv.js') }}"></script>
-    <script src="{{ asset('/build/min/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('/build/min/rw-sidebar.min.js') }}"></script>
-    <script src="{{ asset('/build/min/smk-accordion.min.js') }}"></script>
-    <script src="{{ asset('/build/min/smk-menu.min.js') }}"></script>
-    <script src="{{ asset('/build/min/smk-visual-select.min.js') }}"></script>
-    <script src="{{ asset('/build/min/scripts.min.js') }}"></script>
+    <script src="{{ asset('build/app.js') }}"></script>
+    <script src="{{ asset('build/min/jquery.qtip.min.js') }}"></script>
+    <script src="{{ asset('build/min/html5shiv.js') }}"></script>
+    <script src="{{ asset('build/min/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('build/min/rw-sidebar.min.js') }}"></script>
+    <script src="{{ asset('build/min/smk-accordion.min.js') }}"></script>
+    <script src="{{ asset('build/min/smk-menu.min.js') }}"></script>
+    <script src="{{ asset('build/min/smk-visual-select.min.js') }}"></script>
+    <script src="{{ asset('build/min/scripts.min.js') }}"></script>
 {% endblock %}
 </body>
 </html>
