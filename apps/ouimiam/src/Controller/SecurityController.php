@@ -34,4 +34,12 @@ class SecurityController extends Controller
             'last_username' => $lastUsername,
         ];
     }
+
+    /**
+     * @Route("/logout", name="security_logout")
+     */
+    public function LogoutAction()
+    {
+
+    }
 }

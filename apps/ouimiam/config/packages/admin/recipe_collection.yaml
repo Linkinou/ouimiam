@@ -6,7 +6,12 @@ easy_admin:
                 fields:
                     - id
                     - name
+                    - user
+                    - description
+                    - recipes
             form:
                 fields:
-                    - id
                     - name
+                    - user
+                    - description
+                    - {property: recipes, type_options: { by_reference: false }}

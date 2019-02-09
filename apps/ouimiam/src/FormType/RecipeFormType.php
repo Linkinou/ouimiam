@@ -20,21 +20,8 @@ class RecipeFormType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('imageFile', VichImageType::class)
-            ->add('preparation', TextareaType::class)
             ->add('cookingSteps', TextareaType::class)
             ->add('description', TextareaType::class)
-            ->add('duration', TextType::class)
-            ->add('difficulty', EntityType::class, [
-                'class' => Difficulty::class,
-                'choice_label' => 'name'
-            ])
-            ->add('ingredients', CollectionType::class, [
-                'entry_type' => IngredientFormType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'label' => false,
-                'by_reference' => false
-            ])
         ;
     }
 

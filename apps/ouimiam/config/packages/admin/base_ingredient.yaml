@@ -8,5 +8,4 @@ easy_admin:
                     - name
             form:
                 fields:
-                    - id
                     - name

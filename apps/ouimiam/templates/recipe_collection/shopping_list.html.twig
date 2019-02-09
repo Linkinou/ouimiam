@@ -20,7 +20,7 @@
             <div class="rw-row">
                 <div class="entry style-columns">
                     <div class="entry-photo single-recipe-photo-cover">
-                        <img src="build/placeholder/1.jpg" alt="">
+                        <img src="{{ asset('build/placeholder/1.jpg') }}" alt="">
                     </div>
                     <div class="entry-content clearfix">
 
@@ -33,7 +33,7 @@
                                             <div class="mark-as-ok"><i class="fa fa-check"></i></div>
                                             <div class="ingredient"><a href="#">{{ ingredient.name }}</a></div>
                                             <div class="quantity">
-                                                <div class="qt">{{ ingredient.quantity }} {{ ingredient.unit }}</div>
+                                                <div class="qt">x{{ ingredient.quantity }}</div>
                                                 {#<div class="qt-notes">{{ ingredient.note }}</div>#}
                                             </div>
                                         </li>

@@ -1,7 +1,0 @@
-App\Entity\Ingredient:
-    ingredient_{0..30}:
-        baseIngredient: '@base_ingredient_*'
-        unit: '@unit_*'
-        note: <sentence()>
-        amount: <randomDigit()>
-        recipes: ['@recipe_*']

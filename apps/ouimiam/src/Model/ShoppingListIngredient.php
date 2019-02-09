@@ -2,15 +2,12 @@
 
 namespace App\Model;
 
-use App\Entity\Ingredient;
+use App\Entity\BaseIngredient;
 
 class ShoppingListIngredient
 {
     /** @var string */
     private $name;
-
-    /** @var string */
-    private $unit;
 
     /** @var int */
     private $quantity;
@@ -18,14 +15,11 @@ class ShoppingListIngredient
     /**
      * ShoppingListIngredient constructor.
      * @param string $name
-     * @param string $unit
-     * @param int $quantity
      */
-    public function __construct(string $name, string $unit, int $quantity)
+    public function __construct(string $name)
     {
         $this->name = $name;
-        $this->unit = $unit;
-        $this->quantity = $quantity;
+        $this->quantity = 1;
     }
 
     /**
@@ -65,30 +59,10 @@ class ShoppingListIngredient
     }
 
     /**
-     * @return string
+     * @param BaseIngredient $ingredient
      */
-    public function getUnit(): string
+    public function cumulateIngredient()
     {
-        return $this->unit;
-    }
-
-    /**
-     * @param string $unit
-     * @return ShoppingListIngredient
-     */
-    public function setUnit(string $unit): ShoppingListIngredient
-    {
-        $this->unit = $unit;
-        return $this;
-    }
-
-    /**
-     * @param Ingredient $ingredient
-     */
-    public function cumulateIngredient(Ingredient $ingredient)
-    {
-        if ($ingredient->getBaseIngredient()->getName() === $this->name) {
-            $this->quantity += $ingredient->getAmount();
-        }
+        $this->quantity++;
     }
 }

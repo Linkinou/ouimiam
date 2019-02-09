@@ -1,0 +1,13 @@
+easy_admin:
+    entities:
+        Avatar:
+            class: App\Entity\UserAvatar
+            list:
+                fields:
+                    - id
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%' }
+                    - hungryUser
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - hungryUser

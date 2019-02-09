@@ -45,13 +45,6 @@ class Recipe
      *
      * @ORM\Column(type="text")
      */
-    private $preparation;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="text")
-     */
     private $cookingSteps;
 
     /**
@@ -62,23 +55,10 @@ class Recipe
     private $description;
 
     /**
-     * @var string
+     * @var ArrayCollection|BaseIngredient[]
      *
-     * @ORM\Column(type="string")
-     */
-    private $duration;
-
-    /**
-     * @var Difficulty
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Difficulty")
-     */
-    private $difficulty;
-
-    /**
-     * @var ArrayCollection|Ingredient[]
-     *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", mappedBy="recipes", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\BaseIngredient", inversedBy="recipes")
+     * @ORM\JoinTable(name="recipes_ingredients")
      *
      */
     private $ingredients;
@@ -162,7 +142,7 @@ class Recipe
     /**
      * @return HungryUser
      */
-    public function getUser(): HungryUser
+    public function getUser(): ?HungryUser
     {
         return $this->user;
     }
@@ -187,7 +167,7 @@ class Recipe
     }
 
     /**
-     * @param Ingredient[]|ArrayCollection $ingredients
+     * @param BaseIngredient[]|ArrayCollection $ingredients
      * @return Recipe
      */
     public function setIngredients(array $ingredients) : Recipe
@@ -198,25 +178,22 @@ class Recipe
     }
 
     /**
-     * @param Ingredient $ingredient
+     * @param BaseIngredient $ingredient
      * @return $this
      */
-    public function addIngredient(Ingredient $ingredient) : Recipe
+    public function addIngredient(BaseIngredient $ingredient) : Recipe
     {
         $ingredient->addRecipe($this);
-
-        if (!$this->ingredients->contains($ingredient)) {
-            $this->ingredients->add($ingredient);
-        }
+        $this->ingredients[] = $ingredient;
 
         return $this;
     }
 
     /**
-     * @param Ingredient $ingredient
+     * @param BaseIngredient $ingredient
      * @return $this
      */
-    public function removeIngredient(Ingredient $ingredient) : Recipe
+    public function removeIngredient(BaseIngredient $ingredient) : Recipe
     {
         $this->ingredients->remove($ingredient);
 
@@ -245,25 +222,6 @@ class Recipe
     /**
      * @return string
      */
-    public function getPreparation(): ?string
-    {
-        return $this->preparation;
-    }
-
-    /**
-     * @param string $preparation
-     * @return Recipe
-     */
-    public function setPreparation(string $preparation): Recipe
-    {
-        $this->preparation = $preparation;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getCookingSteps(): ?string
     {
         return $this->cookingSteps;
@@ -276,44 +234,6 @@ class Recipe
     public function setCookingSteps(string $cookingSteps): Recipe
     {
         $this->cookingSteps = $cookingSteps;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDuration(): ?string
-    {
-        return $this->duration;
-    }
-
-    /**
-     * @param string $duration
-     * @return Recipe
-     */
-    public function setDuration(string $duration): Recipe
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * @return Difficulty
-     */
-    public function getDifficulty(): ?Difficulty
-    {
-        return $this->difficulty;
-    }
-
-    /**
-     * @param Difficulty $difficulty
-     * @return Recipe
-     */
-    public function setDifficulty(Difficulty $difficulty): Recipe
-    {
-        $this->difficulty = $difficulty;
 
         return $this;
     }
@@ -410,5 +330,10 @@ class Recipe
         $this->image = $image;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

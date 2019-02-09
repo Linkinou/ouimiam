@@ -3,20 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Vich\UploaderBundle\Entity\File as EmbeddedFile;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity()
  * @UniqueEntity(fields="email", message="Email already taken")
  * @UniqueEntity(fields="username", message="Username already taken")
- * @Vich\Uploadable()
  */
 class HungryUser implements UserInterface, EquatableInterface
 {
@@ -70,37 +65,19 @@ class HungryUser implements UserInterface, EquatableInterface
     private $roles = ['ROLE_USER'];
 
     /**
-     * @Assert\File(
-     *     maxSize="500k",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
-     * )
+     * @var UserAvatar
      *
-     * @Vich\UploadableField(mapping="user_images", fileNameProperty="image")
-     * @var File
+     * @ORM\OneToOne(targetEntity="App\Entity\UserAvatar", inversedBy="hungryUser", cascade={"persist"})
      */
-    private $imageFile;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $image;
+    private $avatar;
 
     /**
      * HungryUser constructor.
      */
     public function __construct()
     {
-        $this->updatedAt = new \DateTime();
+        $this->avatar = new UserAvatar();
     }
-
 
     /**
      * @return int
@@ -247,73 +224,28 @@ class HungryUser implements UserInterface, EquatableInterface
     }
 
     /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|UploadedFile $image
-     */
-    public function setImageFile(?File $image = null)
-    {
-        $this->imageFile = $image;
-
-        if (null !== $image) {
-            $this->updatedAt = new \DateTime();
-        }
-    }
-
-    /**
-     * @return File
-     */
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param string $image
-     * @return HungryUser
-     */
-    public function setImage(string $image): HungryUser
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param mixed $updatedAt
-     * @return HungryUser
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function __toString() : string
     {
         return sprintf('%s', $this->getEmail());
+    }
+
+    /**
+     * @return UserAvatar
+     */
+    public function getAvatar(): ?UserAvatar
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param UserAvatar $avatar
+     * @return HungryUser
+     */
+    public function setAvatar(UserAvatar $avatar): HungryUser
+    {
+        $this->avatar = $avatar;
+        return $this;
     }
 }

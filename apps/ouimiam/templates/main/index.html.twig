@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}OuiFood - Homepage{% endblock %}
+{% block title %}OuiFood - Accueil{% endblock %}
 
 {% block body %}
     <div class="rw-container rw-section">
@@ -18,7 +18,7 @@
                                     {% if recipeOfTheDay.image is not null %}
                                         <img src="{{ vich_uploader_asset(recipeOfTheDay, 'imageFile') }}" alt="{{ recipeOfTheDay.image }}" >
                                     {% else %}
-                                        <img src="build/placeholder/food/560x380/21.jpg" alt="" />
+                                        <img src="{{ asset('build/placeholder/food/560x380/21.jpg') }}" alt="" />
                                     {% endif %}
                                 </div>
                             </div>
@@ -26,27 +26,13 @@
                                 <h3><a href="{{ path('view_recipe', {'id': recipeOfTheDay.id}) }}">{{ recipeOfTheDay.name }}</a></h3>
                                 <p>{{ recipeOfTheDay.description }}</p>
 
-                                {#<div class="entry-meta clearfix">#}
-                                    {#<div class="meta favorites">#}
-                                        {#<span class="icon"><i class="the-icon fa fa-heart-o"></i></span>#}
-                                        {#<span class="number">89 favorites</span>#}
-                                    {#</div>#}
-                                    {#<div class="meta likes">#}
-                                        {#<span class="icon"><i class="the-icon fa fa-thumbs-o-up"></i></span>#}
-                                        {#<span class="number">225 likes</span>#}
-                                    {#</div>#}
-                                    {#<div class="meta comments">#}
-                                        {#<span class="icon"><i class="the-icon fa fa-comments"></i></span>#}
-                                        {#<span class="number">26 comments</span>#}
-                                    {#</div>#}
-                                {#</div>#}
                                 <div class="clear"></div>
 
                                 <div class="entry-info-author">
-                                    {% if recipeOfTheDay.user.image is not null %}
-                                        <img width="80px" height="80px" src="{{ vich_uploader_asset(recipeOfTheDay.user, 'imageFile') }}" alt="{{ recipeOfTheDay.user.image }}" >
+                                    {% if recipeOfTheDay.user.avatar.image is not null %}
+                                        <img width="80px" height="80px" src="{{ vich_uploader_asset(recipeOfTheDay.user, 'imageFile') }}" alt="{{ recipeOfTheDay.user.avatar.image }}" >
                                     {% else %}
-                                        <img src="build/placeholder/people/80x80/21.jpg" alt="" />
+                                        <img src="{{ asset('build/placeholder/people/80x80/21.jpg') }}" alt="" />
                                     {% endif %}
                                     <div class="submited-by">Auteur:</div>
                                     <div class="author-sname"><a href="#">{{ recipeOfTheDay.user.username }}</a> <!-- <span class="mark green" title="Pro member!">Pro</span> --></div>
@@ -63,7 +49,7 @@
                     <div class="grid-container carousel-container">
 
                         <div class="grid desk-6 mob-6">
-                            <h4 class="carousel-posts-heading">Latest recipes</h4>
+                            <h4 class="carousel-posts-heading">Dernières recettes</h4>
                         </div>
                         <div class="grid desk-6 mob-6">
                             <div class="carousel-posts-nav clearfix">
@@ -81,7 +67,7 @@
                                         {% if latestRecipe.image is not null %}
                                             <img src="{{ vich_uploader_asset(latestRecipe, 'imageFile') }}" alt="{{ latestRecipe.image }}" >
                                         {% else %}
-                                            <img src="build/placeholder/food/350x240/18.jpg" alt="" />
+                                            <img src="{{ asset('build/placeholder/food/350x240/18.jpg') }}" alt="" />
                                         {% endif %}
                                     </div>
                                     <div class="entry-title">

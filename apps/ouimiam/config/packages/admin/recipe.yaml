@@ -9,8 +9,6 @@ easy_admin:
                     - name
                     - user
                     - description
-                    - duration
-                    - difficulty
                     - ingredients
                     - collections
             form:
@@ -19,7 +17,6 @@ easy_admin:
                     - name
                     - user
                     - description
-                    - duration
-                    - difficulty
-                    - ingredients
-                    - collections
+                    - cookingSteps
+                    - { property: 'ingredients', type: 'easyadmin_autocomplete', type_options: { by_reference: false } }
+                    - { property: collections, type_options: { by_reference: false } }
