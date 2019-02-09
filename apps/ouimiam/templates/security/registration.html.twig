@@ -35,5 +35,5 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('forms') }}
-    <script src="build/forms.js"></script>
+    <script src="{{ asset('build/forms.js') }}"></script>
 {% endblock %}
